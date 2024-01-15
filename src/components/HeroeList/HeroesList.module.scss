@@ -1,0 +1,15 @@
+.heroes__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 18px;
+  margin-bottom: 70px;
+}
+
+
+@media (max-width: 1410px) {
+  .heroes__list {
+    justify-content: center;
+  }
+}

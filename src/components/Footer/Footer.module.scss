@@ -1,0 +1,42 @@
+.footer {
+  flex: 0 0 auto;
+
+  .wrapper-footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-color: #000;
+    width: 100%;
+  }
+
+  .official-info {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    width: 60%;
+    max-width: 500px;
+    font-family: "Radiance","Noto Sans",sans-serif;
+  }
+}
+
+.logos {
+  display: flex;
+  gap: 90px;
+}
+
+
+
+@media(max-width:450px) {
+ .footer {
+    .official-info {
+        width: 100%;
+    }
+ }
+
+
+    .logos {
+        gap: 40px;
+      }
+}

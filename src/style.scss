@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Reaver";
+  src: local("Reaver"), url(./fonts/Reaver-SemiBold.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Radiance";
+  src: local("Radiance"), url(./fonts/radiance.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*,
+*::before,
+::after {
+  box-sizing: inherit;
+}
+
+body {
+  color: #fff;
+  font-family: "Reaver", serif;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  height: 100%;
+}
+
+ul {
+  padding-inline-start: 0px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}

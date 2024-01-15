@@ -1,0 +1,95 @@
+.heroes {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+
+  &__wrapper-text {
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  &__title {
+    color: #fff;
+    font-size: 3vw;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 112%;
+  }
+
+  &__description {
+    font-family: "Radiance","Noto Sans",sans-serif;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0px auto;
+    color: #ddd;
+    font-size: 26px;
+    text-align: center;
+    font-weight: 100;
+    margin-bottom: 50px;
+  }
+}
+
+.no-heroes-message {
+  font-family: "Radiance",serif;
+    font-size: 75px;
+    color: #fff;
+    text-align: center;
+    margin-top: 12vw;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100px); // Начало смещения снизу
+    opacity: 0; // Начальная прозрачность
+  }
+  to {
+    transform: translateY(0); // Конечное положение
+    opacity: 1; // Полная видимость
+  }
+}
+
+.animated-appear {
+  animation: slideUp 1.5s ease-out forwards; // Применение анимации
+}
+
+
+@media (max-width:1000px) {
+   
+  .heroes__title {
+    font-size: 40px;
+  }
+
+  .heroes__description {
+    font-size: 26px;
+  }
+
+  .no-heroes-message {
+    font-size: 50px;
+  }
+
+}
+
+@media (max-width:800px) {
+  .no-heroes-message {
+    font-size: 35px;
+  }
+}
+
+
+@media (max-width:500px) {
+   
+  .heroes__title {
+    font-size: 26px;
+  }
+
+  .heroes__description {
+    font-size: 18px;
+  }
+
+}

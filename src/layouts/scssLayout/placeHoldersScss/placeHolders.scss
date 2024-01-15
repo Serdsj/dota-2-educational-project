@@ -1,0 +1,28 @@
+%style_filter_names {
+    color: #808fa6;
+    font-size: 1.0625rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: "Radiance","Noto Sans",sans-serif;
+}
+
+%wrapper_filters_styles {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+%style-icon-filter {
+    width: 44px;
+    height: 34px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition-property: filter;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.1s;
+    cursor: pointer;
+    color: #fff;
+    filter: brightness(0.5) saturate(0);
+    background-color: transparent;
+    border: none;
+}

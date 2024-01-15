@@ -1,0 +1,43 @@
+.header {
+  .header__menuList {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
+    margin-top: 0;
+    align-items: center;
+
+    .menu-link {
+      text-transform: uppercase;
+      font-family: "Reaver", serif;
+      font-weight: 600;
+      letter-spacing: 3px;
+      opacity: 0.8;
+      color: #fff;
+      &:hover {
+        color: orange;
+        cursor: pointer;
+      }
+    } 
+
+    .game-logo {
+      width: 200px;
+      min-width: 200px;
+      height: 50px;
+      min-height: 50px;
+      opacity: 0.8;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .header {
+    .header__menuList {
+      padding: 20px 0px 20px 0px;
+      justify-content: space-between;
+
+      .game-logo {
+        width: 150px;
+      }
+    }
+  }
+}
