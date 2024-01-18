@@ -9,7 +9,7 @@ export function useHeroData(heroId) {
   useEffect(() => {
     async function responseHeroesDetails() {
       try {
-        let heroData = await getHeroData(heroId);
+        let heroData = await getHeroData();
 
         if (heroData === null) {
           throw new Error("Network response was not ok");

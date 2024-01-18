@@ -6,10 +6,7 @@ export function useFilterCollectionHeroes(valueInput = "", heroeInfo = []) {
   const [currentFilterAttr, setCurrentFilterAttr] = useState(null); // фильтр по атрибутам
   const [currentFilterComp, setCurrentFilterComp] = useState(null); // фильтр сложности
 
-  const [isAnimating, setIsAnimating] = useState(false); // для анимации
-
   const handleFilterClick = (filterValue, filterType) => {
-    setIsAnimating(true); // Запуск анимации
     if (filterType === "attr") {
       setCurrentFilterAttr(
         currentFilterAttr === filterValue ? null : filterValue // это для повторного клика
@@ -25,8 +22,6 @@ export function useFilterCollectionHeroes(valueInput = "", heroeInfo = []) {
     let resultFilter = [...heroeInfo];
     // запуск поиска
     if (valueInput) {
-      setIsAnimating(true); // Запуск анимации
-
       setCurrentFilterAttr(null);
       setCurrentFilterComp(null);
       // сбрасываем фильтры если поиск начался
@@ -51,24 +46,14 @@ export function useFilterCollectionHeroes(valueInput = "", heroeInfo = []) {
         );
       }
     }
-    if (isAnimating) {
-      // если анимация запущенна
-      const timer = setTimeout(() => {
-        setFilterList(resultFilter);
-        setIsAnimating(false);
-      }, 500); // Задержка для того чтобы класс успел добавиться
 
-      return () => clearTimeout(timer); // чистим за собой таймеры
-    } else {
+    const timer = setTimeout(() => {
       setFilterList(resultFilter);
-    }
-  }, [
-    valueInput,
-    currentFilterAttr,
-    currentFilterComp,
-    isAnimating,
-    heroeInfo,
-  ]);
+    }, 450); // Задержка для того чтобы класс успел добавиться
+
+    return () => clearTimeout(timer);
+  }, [valueInput, currentFilterAttr, currentFilterComp, heroeInfo]);
+
   return {
     filterList,
     handleFilterClick,

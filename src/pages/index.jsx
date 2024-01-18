@@ -1,15 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HeroesFilterPage from "./HeroesFilterPage/HeroesFilterPage";
-import Test from "../components/Testss/Test";
 import HeroPage from "../pages/HeroPage/HeroPage";
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter([ // здесь мы определяем структуры маршрутиризации нашего приложения
   {
     path: "/",
     element: <HeroesFilterPage />,
   },
   {
-    path: "hero/:heroId",
+    path: "hero/:heroName",
     element: <HeroPage />,
   },
 ]);
+
+
+// потом мы можем из пути мы можем вытащить heroId с помощью const { heroId } = useParams();

@@ -1,8 +1,8 @@
 import {useHeroData} from "../useHeroData"
 
-export default function HeroDescription(props) {
+export default function HeroDescription({heroId}) {
   
-  const {heroDetailData} = useHeroData()
+  const {heroDetailData} = useHeroData(heroId)
 
   console.log(heroDetailData)
 

@@ -1,0 +1,37 @@
+import { getHeroesList } from "../shared/api/index";
+import { useQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
+
+export function useHeroesList() {
+  const { data, isLoading, error, isError } = useQuery({
+    queryKey: ["heroList"],
+    queryFn: () => getHeroesList(),
+  });
+
+  const sortedData = useMemo(() => {
+    // этот хук нужен для оптимизации. Сортировка будет проводиться только при изменении зависимости
+    if (!Array.isArray(data)) {
+      return [];
+    }
+
+    return [...data].sort((a, b) => {
+      const nameA = a.name_loc.toLowerCase();
+      const nameB = b.name_loc.toLowerCase();
+
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+  }, [data]);
+
+  return {
+    data: sortedData,
+    isLoading,
+    error,
+    isError,
+  };
+}

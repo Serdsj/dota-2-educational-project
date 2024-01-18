@@ -100,6 +100,7 @@
 
 
 @media (max-width: 550px) {
+  
   .heroe {
     width: 185px;
     height: 115px;
@@ -122,18 +123,24 @@
 }
 
 @media (max-width: 450px) {
+
   .heroe {
     width: 270px;
     height: 140px;
     background-position: top;
 
+    &:hover {
+      transform: scale(1.1);
+      z-index: 4;
+    }
+  
     .attribute-picture {
       width: 20px;
       height: 20px;
     }
 
     .name-heroe {
-      font-size: 9px;
+      font-size: 18px;
     }
   }
 }

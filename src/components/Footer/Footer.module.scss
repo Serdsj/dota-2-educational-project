@@ -17,26 +17,25 @@
     color: #777;
     width: 60%;
     max-width: 500px;
-    font-family: "Radiance","Noto Sans",sans-serif;
+    font-family: "Radiance", "Noto Sans", sans-serif;
   }
 }
 
 .logos {
   display: flex;
-  gap: 90px;
+  gap: 45px;
 }
 
-
-
-@media(max-width:450px) {
- .footer {
+@media (max-width: 450px) {
+  .footer {
     .official-info {
-        width: 100%;
+      width: 100%;
     }
- }
+  }
 
-
-    .logos {
-        gap: 40px;
-      }
+  .logos {
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
 }
