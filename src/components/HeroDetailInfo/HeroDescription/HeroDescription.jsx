@@ -1,11 +1,5 @@
-import {useHeroData} from "../useHeroData"
-
-export default function HeroDescription({heroId}) {
+export default function HeroDescription() {
   
-  const {heroDetailData} = useHeroData(heroId)
-
-  console.log(heroDetailData)
-
   return (
     <section className="hero-description">
       <div className="hero-vertical-bar">

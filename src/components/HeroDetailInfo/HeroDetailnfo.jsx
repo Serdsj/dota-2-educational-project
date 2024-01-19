@@ -1,11 +1,11 @@
 import HeroDescription from "./HeroDescription/HeroDescription"
 
-export default function HeroDetailInfo ({currentId}) {
+export default function HeroDetailInfo () {
      
-    let id = currentId
+
     return (
         <>
-        <HeroDescription heroId={id}/>
+        <HeroDescription/>
         </>
     )
 }

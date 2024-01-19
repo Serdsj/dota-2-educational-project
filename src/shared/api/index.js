@@ -31,11 +31,11 @@ export const getHeroesList = async (params = {}) => {
   }
 };
 
-export const getHeroData = async (id, params = {}) => {
+export const getHeroData = async ({ id }) => {
   // новая api, много данных
 
   const api = `${CONFIG.API_HERO_DATA}&hero_id=${id}`;
-  const response = await fetch(api, params).then((resp) => resp.json());
+  const response = await fetch(api).then((resp) => resp.json());
 
   const heroData = response?.result?.data?.heroes ?? [];
 

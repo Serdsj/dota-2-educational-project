@@ -5,8 +5,8 @@ import intelligence from "../../img/hero_intelligence.png";
 import strength from "../../img/hero_strength.png";
 import universal from "../../img/hero_universal.png";
 
-
 export default function HeroeItem({ url, id, imgSrc, localName, attr, isVisible }) {
+
   const attributes = {
     0: strength,
     1: agility,

@@ -4,8 +4,6 @@ import HeroesList from "../HeroeList/HeroesList";
 import { useHeroesList } from "../../query/useHeroesList";
 import { useFilterCollectionHeroes } from "./useFilterCollectionHeroes";
 import { useInputHeroes } from "./useInputHeroes";
- // крч я столкнулся с пробелмой глобального состояния 
-// export const heroNameToIndexMap = {}; // это объект имен с индексами
 
 export default function CollectionHeroes() {
 
@@ -27,21 +25,6 @@ export default function CollectionHeroes() {
   if (isError) {
     return <div className={styles["no-heroes-list"]}>Error: {error.message}</div>;
   }
-
-  // filterList.forEach((hero, index) => {
-  //   heroNameToIndexMap[hero.name_loc] = index;
-  // });
-
-  // console.log(`это объетк ключей созданный из фильтрованного списка heroNameToIndexMap ${heroNameToIndexMap}`)
-
-  // useEffect(() => {
-  //   let currentIndex = heroNameToIndexMap[currentHeroName];
-  //   let currentHeroId = filterList[currentIndex]?.id;
-  //   let prevHeroId = filterList[currentIndex - 1]?.id;
-  //   let nextHeroId = filterList[currentIndex + 1]?.id;
-  
-  //   setNeighboringIds({ current: currentHeroId, prev: prevHeroId, next: nextHeroId });
-  // }, [heroName, heroes]);
 
   return (
     <section className={styles["heroes"]}>
