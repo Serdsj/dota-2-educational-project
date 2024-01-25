@@ -6,6 +6,17 @@ export function useHeroesList() {
   const { data, isLoading, error, isError } = useQuery({
     queryKey: ["heroList"],
     queryFn: () => getHeroesList(),
+    select: (heroesList) => {
+      const heroList = heroesList?.result?.data?.heroes ?? [];
+
+      if (heroList && Array.isArray(heroList) && heroList.length > 0) {
+        return heroList;
+      }
+
+      return [];
+    },
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
   });
 
   const sortedData = useMemo(() => {

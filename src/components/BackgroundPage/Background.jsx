@@ -1,9 +1,9 @@
 
-import styleBackground from "./Background.module.scss"
+import styleBackground from "./Background.module.scss";
 
-export default function Background ({ children }) {
+export default function Background({ children, className }) {
     return (
-        <div className={styleBackground["background"]}>
+        <div className={`${styleBackground["background"]} ${className}`}>
             {children}
         </div>
     );

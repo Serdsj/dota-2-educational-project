@@ -1,87 +1,42 @@
 import { getHeroData } from "../../shared/api/index";
-import { useQuery } from "@tanstack/react-query";
+import { useGetHeroesData } from "../../query/useGetHeroesData";
+import { useMemo } from "react";
 
 export function useHeroesData(heroesList, heroName) {
-  const heroNameToIndexMap = {}; // объект имен с индексами
+  const updatedHeroesList = useMemo(() => {
+    return heroesList.map((item) => {
+      return {
+        ...item,
+        name_loc: item.name_loc.toLowerCase().split(" ").join(""),
+      };
+    });
+  }, [heroesList]);
 
-  heroesList.forEach((hero, index) => {
-    heroNameToIndexMap[hero.name_loc] = index;
-  });
+  const heroNameToIndexMap = useMemo(() => {
+    const collectionDataIndex = new Map(); // объект именами и индексами
 
-  console.log(heroNameToIndexMap);
+    updatedHeroesList.forEach((hero, index) => {
+      collectionDataIndex.set(hero.name_loc, index);
+    });
 
-  let currentIndex = heroNameToIndexMap[heroName];
-  let currentHeroId = heroesList[currentIndex]?.id;
+    return collectionDataIndex;
+  }, [updatedHeroesList]);
+
+  let currentIndex = heroNameToIndexMap.get(heroName);
+  let currentHeroId = updatedHeroesList[currentIndex]?.id;
 
   let prevHeroIndex =
-    (currentIndex - 1 + heroesList.length) % heroesList.length;
-  let nextHeroIndex = (currentIndex + 1) % heroesList.length;
+    (currentIndex - 1 + updatedHeroesList.length) % updatedHeroesList.length;
+  let nextHeroIndex = (currentIndex + 1) % updatedHeroesList.length;
 
-  let prevHeroId = heroesList[prevHeroIndex]?.id;
-  let nextHeroId = heroesList[nextHeroIndex]?.id;
+  let prevHeroId = updatedHeroesList[prevHeroIndex]?.id;
+  let nextHeroId = updatedHeroesList[nextHeroIndex]?.id;
 
-  const getId = (id) => (id !== null ? getHeroData(id) : null);
+  let ids = [currentHeroId, prevHeroId, nextHeroId];
 
-  const {
-    data: currentHeroData,
-    isLoading: isLoadingCurrentHero,
-    error: errorCurrentHero,
-    isError: isErrorCurrentHero,
-  } = useQuery({
-    queryKey: ["heroData", currentHeroId],
-    queryFn: () => getId({ id: currentHeroId }),
-    options: {
-      enabled: currentHeroId !== null,
-    },
-  });
+  const response = useGetHeroesData(ids, getHeroData);
 
-  const {
-    data: prevHeroData,
-    isLoading: isLoadingPrevHero,
-    error: errorPrevHero,
-    isError: isErrorPrevHero,
-  } = useQuery({
-    queryKey: ["heroData", prevHeroId],
-    queryFn: () => getId({ id: prevHeroId }),
-    options: {
-      enabled: prevHeroId !== null,
-    },
-  });
+  const [currentHeroData, prevHeroData, nextHeroData] = response;
 
-  const {
-    data: nextHeroData,
-    isLoading: isLoadingNextHero,
-    error: errorNextHero,
-    isError: isErrorNextHero,
-  } = useQuery({
-    queryKey: ["heroData", nextHeroId],
-    queryFn: () => getId({ id: nextHeroId }),
-    options: {
-      enabled: nextHeroId !== null,
-    },
-  });
-
-  if (errorCurrentHero)
-    console.error(`error about current hero ${errorCurrentHero}`);
-
-  if (errorPrevHero) console.error(`error about prev hero  ${prevHeroData}`);
-
-  if (errorNextHero) console.error(`error about next hero  ${errorNextHero}`);
-
-  if (
-    !Array.isArray(currentHeroData) ||
-    !Array.isArray(prevHeroData) ||
-    !Array.isArray(nextHeroData)
-  ) {
-    return [];
-  }
-
-  return {
-    currentHeroData,
-    prevHeroData,
-    nextHeroData,
-    isLoading: isLoadingCurrentHero || isLoadingPrevHero || isLoadingNextHero,
-    isError: isErrorCurrentHero || isErrorPrevHero || isErrorNextHero,
-    error: errorCurrentHero || errorPrevHero || errorNextHero,
-  };
+  return { currentHeroData, prevHeroData, nextHeroData };
 }

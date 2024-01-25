@@ -1,4 +1,7 @@
-export default function HeroPrevAllNext(props) {
+import { NavLink } from "react-router-dom";
+
+
+export default function HeroSwitch(props) {
   return (
     <div className="heroes-switch">
       <a className="previous-hero" href="">
@@ -42,3 +45,6 @@ export default function HeroPrevAllNext(props) {
     </div>
   );
 }
+
+
+

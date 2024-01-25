@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import HeroesFilterPage from "./HeroesFilterPage/HeroesFilterPage";
 import HeroPage from "../pages/HeroPage/HeroPage";
 

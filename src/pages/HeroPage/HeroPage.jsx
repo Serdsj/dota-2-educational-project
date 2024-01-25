@@ -1,34 +1,25 @@
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 import HeroDetailInfo from "../../components/HeroDetailInfo/HeroDetailnfo";
+import { createContext } from "react";
 import { useParams } from "react-router-dom";
 import { useHeroesList } from "../../query/useHeroesList";
 import { useHeroesData } from "./useHeroesData";
+import styles from "./HeroPage.module.scss"
+
+export let HeroDataContext = createContext(null);
 
 export default function HeroPage() {
+  
   const { data: sortedData } = useHeroesList();
-  const { heroName } = useParams(); // через пропсы передать можно
-  const {  
-    currentHeroData,
-    prevHeroData,
-    nextHeroData,
-    isLoading,
-    isError,
-    error, } = useHeroesData(
-    sortedData,
-    heroName
-  );
+  const { heroName } = useParams();  // это имя которое вытащили из адресса страницы
+  const { currentHeroData, prevHeroData, nextHeroData } = useHeroesData(sortedData, heroName);
 
-  console.log(`это currentHeroData ${currentHeroData} `);
-  console.log(`это prevHeroData ${prevHeroData} `);
-  console.log(`это nextHeroData ${nextHeroData} `);
-  // console.log(`это sortedData ${sortedData} `);
-  // console.log(`это isLoading ${isLoading} `);
-  // console.log(`это error ${error} `);
-  // console.log(`это isError ${isError} `);
-
+ 
   return (
-    <MainLayout>
-      <HeroDetailInfo />
+    <MainLayout className={styles["hero-page"]}>
+      <HeroDataContext.Provider value={{ currentHeroData, prevHeroData, nextHeroData }}> 
+        <HeroDetailInfo />
+      </HeroDataContext.Provider>
     </MainLayout>
   );
 }

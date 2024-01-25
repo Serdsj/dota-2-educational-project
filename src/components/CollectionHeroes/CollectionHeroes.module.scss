@@ -15,7 +15,7 @@
     font-size: 3vw;
     font-weight: bold;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 150px;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -32,6 +32,7 @@
     text-align: center;
     font-weight: 100;
     margin-bottom: 50px;
+    line-height: 1.2;
   }
 }
 
@@ -80,7 +81,6 @@
   .no-heroes-message, .no-heroes-list {
     font-size: 50px;
   }
-
 }
 
 @media (max-width:800px) {
@@ -100,5 +100,4 @@
   .heroes__description {
     font-size: 18px;
   }
-
 }

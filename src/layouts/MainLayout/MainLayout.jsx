@@ -4,17 +4,16 @@ import Background from "../../components/BackgroundPage/Background";
 import styleContent from "./MainLayout.module.scss";
 
 
-export default function MainLayout({ children }) { // это скелет
+export default function MainLayout({ children, className }) { // это скелет
     return (
     <>
-        <Background> 
+        <Background className={className}>  
           <Header />
           <main className={styleContent["main"]}>
            {children}
           </main>
           </Background>
           <Footer />
-        
     </>
     )
 }

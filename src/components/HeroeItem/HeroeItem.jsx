@@ -5,7 +5,7 @@ import intelligence from "../../img/hero_intelligence.png";
 import strength from "../../img/hero_strength.png";
 import universal from "../../img/hero_universal.png";
 
-export default function HeroeItem({ url, id, imgSrc, localName, attr, isVisible }) {
+export default function HeroeItem({ url, id, localName, attr, isVisible }) {
 
   const attributes = {
     0: strength,
@@ -13,11 +13,13 @@ export default function HeroeItem({ url, id, imgSrc, localName, attr, isVisible 
     2: intelligence,
     3: universal,
   }
-  const currentAttribute = attributes[attr] ?? null
+  const currentAttribute = attributes[attr] ?? null;
+
+  const changeName = localName.toLowerCase().split(" ").join("");
 
   return (
     <li className= { `${!isVisible ? styleHitem["fade-out-then-move-left"] : styleHitem["fade-in-move-right"] }`}>
-     <NavLink to={`hero/${localName}`} className="link-description">
+     <NavLink to={`hero/${changeName}`} className="link-description">
         <div
           className={`${styleHitem["heroe"]}`}
           data-id={id}

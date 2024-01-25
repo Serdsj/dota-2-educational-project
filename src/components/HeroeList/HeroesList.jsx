@@ -24,7 +24,6 @@ export default function HeroesList({ heroesData, currentFilterAttr, currentFilte
     return true
   }
 
-
   return (
     <ul className={`${stylesHList["heroes__list"]}`}>
       {heroesData.map((currentData) => {        

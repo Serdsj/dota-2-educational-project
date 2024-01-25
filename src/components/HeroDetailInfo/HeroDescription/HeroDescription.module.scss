@@ -1,0 +1,158 @@
+@keyframes slideUp {
+  from {
+    transform: translateY(100px); // Начало смещения снизу
+    opacity: 0; // Начальная прозрачность
+  }
+  to {
+    transform: translateY(0); // Конечное положение
+    opacity: 1; // Полная видимость
+  }
+}
+
+.animated-appear {
+  animation: slideUp 1.5s ease-out forwards; // Применение анимации
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-90px) rotate(270deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px) rotate(270deg);
+    opacity: 1;
+  }
+}
+
+@keyframes opacityBackground {
+  from { 
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.background-line {
+  width: 150%;
+    height: 650px;
+    background-color: #00000060;
+    position: absolute;
+    transform: skewY(-45deg) translateX(-50vw);
+    overflow: hidden;
+    z-index: 10;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-name: opacityBackground;
+}
+
+.hero-description {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 85vh;
+  min-height: 700px;
+  padding: 0px 0px 0px 120px;
+  font-family: "Radiance", "Noto Sans", sans-serif;
+
+  .hero-vertical-bar {
+    width: 900px;
+    height: 50px;
+    position: absolute;
+    left: 115px;
+    bottom: 190px;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-name: slideDown;
+    transform: rotate(270deg);
+    transform-origin: bottom left;
+
+    .attr-img-bar {
+      width: 22px;
+      height: 22px;
+    }
+
+    .name-of-hero-bar {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 17px;
+      font-weight: 600;
+      margin-left: 12px;
+      font-family: "Reaver", serif;
+    }
+
+    .hero-id {
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-left: 10px;
+      transform: translateY(-2px);
+    }
+
+    .vertical-line-bar {
+      flex-grow: 1;
+      height: 2px;
+      background-color: #555;
+      margin: 0px 8px 3px 8px;
+    }
+  }
+
+  .description {
+    margin-top: 150px;
+    margin-left: 30px;
+    width: 35%;
+    height: calc(90% - 100px);
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    // animation-duration: 1s;
+    // animation-timing-function: ease-out;
+    // animation-delay: 0s;
+    // animation-iteration-count: 1;
+    // animation-name: heropage_heroInfoIn_2pSnE;
+  }
+
+  .attribute {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    .attr {
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 100;
+      font-size: 24px;
+    }
+  }
+
+  .name-of-hero {
+    font-family: "Reaver", serif;
+    line-height: 110%;
+    font-size: 80px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 12px;
+    margin-bottom: 0px;
+  }
+
+  .short-description {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #a5e0f3;
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+}
