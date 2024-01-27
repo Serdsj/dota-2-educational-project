@@ -10,7 +10,6 @@ export default function HeroAbilities({heroAbilities}) {
  console.log (filtredAbilities)
     return (
     <div className="wrapper-abilities">
-      <h3 className="title-abilities">ABILITIES</h3>
       <ul className="hero-abilities-list">
         <li className="hero-abilities-item">
           <img className="hero-ability-icon" src="" alt="" />

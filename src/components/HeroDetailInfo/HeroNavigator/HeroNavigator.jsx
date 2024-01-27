@@ -8,9 +8,6 @@ export default function HeroNavigator({ prevName, nextName}) {
   const { heroName } = useParams();  // это имя которое вытащили из адресса страницы
   const { pathname } = useLocation(); // это часть url /hero/axe
 
-  console.log( pathname, "это pathname")
-  console.log( heroName, "это heroName")
-
   const prevHeroPath = pathname.replace( heroName, prevName );
  const nextHeroPath = pathname.replace( heroName, nextName );
   

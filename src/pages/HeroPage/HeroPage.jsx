@@ -14,7 +14,6 @@ export default function HeroPage() {
   const { heroName } = useParams();  // это имя которое вытащили из адресса страницы
   const { currentHeroData, prevHeroData, nextHeroData } = useHeroesData(sortedData, heroName);
 
- 
   return (
     <MainLayout className={styles["hero-page"]}>
       <HeroDataContext.Provider value={{ currentHeroData, prevHeroData, nextHeroData }}> 

@@ -32,7 +32,9 @@ export function createUrlImg(url, nameImg, formatImg) {
       .replace("underlord", "abyssal_underlord")
       .replace("lifestealer", "life_stealer")
       .replace("nature's_prophet", "furion");
+
     let formatImgLoweCase = formatImg.toLowerCase();
+
     return `${urlLowerCase}/${nameImgLowerCase}.${formatImgLoweCase}`;
   } else {
     throw new Error("All arguments must be strings");

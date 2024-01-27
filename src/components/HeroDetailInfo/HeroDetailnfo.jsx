@@ -1,17 +1,17 @@
 import { useContext } from "react";
 import { HeroDataContext } from "../../pages/HeroPage/HeroPage";
 import HeroDescription from "./HeroDescription/HeroDescription";
-import heroDetailStyle from "./HeroDetailnfo.module.scss";
-
+import HeroAttrsRolsStat from "./HeroAttrsRoslStat/HeroAttrsRolsStat";
+import styleDetailInfo from "./HeroDetailnfo.module.scss";
 
 export default function HeroDetailInfo () {
 
   const {currentHeroData} = useContext(HeroDataContext)
 
-  console.log(currentHeroData)
+  // console.log(currentHeroData)
     
     if (currentHeroData.isLoading === true ) {
-      return <div className={heroDetailStyle["info-message"]}> Loading...</div>
+      return <div className={styleDetailInfo["info-message"]}> Loading...</div>
     }
 
     if (currentHeroData.isError) {
@@ -20,8 +20,9 @@ export default function HeroDetailInfo () {
     }
      
     return (
-        <>
+        <div className={styleDetailInfo["wrapper-flex"]}>
         <HeroDescription />
-        </>
+        <HeroAttrsRolsStat />
+        </div>
     )
 }

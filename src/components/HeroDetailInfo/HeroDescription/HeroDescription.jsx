@@ -8,7 +8,8 @@ import HeroAbilities from "../HeroAbilities/HeroAbilities";
 import TreeOfTalents from "../HeroTreeOfTalents/TreeOfTalents";
 
 export default function HeroDescription() {
-  const { currentHeroData, prevHeroData, nextHeroData } =  useContext(HeroDataContext);
+  const { currentHeroData, prevHeroData, nextHeroData } =
+    useContext(HeroDataContext);
 
   const { data: currentHero } = currentHeroData;
   const { data: prevHero } = prevHeroData;
@@ -87,10 +88,14 @@ export default function HeroDescription() {
           complexity={complexity}
         />
       </section>
-        <HeroNavigator prevName={prevName} nextName={nextName} />
-        <div className="wrapper-tree-abill">
-        <HeroAbilities heroAbilities={abilities} />
-        <TreeOfTalents heroTalents={talents} />   
+      <HeroNavigator prevName={prevName} nextName={nextName} />
+
+      <div className={heroDescpStyle["wrapper-top-skills-bar"]}>
+        <h3 className={heroDescpStyle["title-abilities"]}>ABILITIES</h3>
+        <div className={heroDescpStyle["wrapper-talents-abilities"]}>
+          {/* <HeroAbilities heroAbilities={abilities} /> */}
+          <TreeOfTalents heroTalents={talents} />
+        </div>
       </div>
     </section>
   );
