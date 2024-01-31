@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 
-
 export default function HeroSwitch(props) {
   return (
     <div className="heroes-switch">

@@ -21,7 +21,15 @@ export const CONFIG = {
   CHAT_BASE_URL: "https://steamcommunity.com/",
   STORE_BASE_URL: "https://store.steampowered.com/",
   STORE_CHECKOUT_BASE_URL: "https://checkout.steampowered.com/",
-  IMG_URL: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/",
+  IMG_URL: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images",
+  HERO_VIDEO_URL:
+    "https://cdn.cloudflare.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders",
+  ABILITY_VIDEO_URL:
+    "https://cdn.cloudflare.steamstatic.com/apps/dota2/videos/dota_react/abilities",
+  ABILITY_IMG_URL:
+    "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities",
+  HERO_PORTRET_URL:
+    "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/crops/",
   STEAMTV_BASE_URL: "https://steam.tv/",
   HELP_BASE_URL: "https://help.steampowered.com/",
   PARTNER_BASE_URL: "https://partner.steamgames.com/",

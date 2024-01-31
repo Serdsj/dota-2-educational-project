@@ -1,10 +1,11 @@
 import HeroeItem from "../HeroeItem/HeroeItem";
 import stylesHList from "./HeroesList.module.scss";
-import {createUrlImg} from "../../shared/utils/createUrImg"
-import {CONFIG} from '../../shared/config/'
+import { HeroUrlCreator, mediaLinks } from "../../shared/utils/createUrl";
 
 export default function HeroesList({ heroesData, currentFilterAttr, currentFilterComp, searchValue }) {
-  const urlImg = (name) => createUrlImg(`${CONFIG.IMG_URL}/heroes`, `${name}`, "png");
+
+  // const urlImg = new HeroUrlCreator(`${CONFIG.IMG_URL}/heroes`);
+
   const hasVisible = (currentData) => {
     // Если установлен фильтр по атрибутам и герой не соответствует этому фильтру
     if (currentFilterAttr !== null && currentData.primary_attr !== currentFilterAttr) {
@@ -26,11 +27,11 @@ export default function HeroesList({ heroesData, currentFilterAttr, currentFilte
 
   return (
     <ul className={`${stylesHList["heroes__list"]}`}>
-      {heroesData.map((currentData) => {        
+      {heroesData.map((currentData) => {   
         return (
           <HeroeItem
             key={currentData.id}
-            url={urlImg(currentData.name_loc)}
+            url={mediaLinks.createUrl({type:"heroImg", heroName:currentData.name_loc})}
             id={currentData.id}
             localName={currentData.name_loc}
             attr={currentData.primary_attr}

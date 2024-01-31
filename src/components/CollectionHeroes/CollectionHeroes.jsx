@@ -18,9 +18,9 @@ export default function CollectionHeroes() {
     currentFilterComp,
   } = useFilterCollectionHeroes(value, sortedData);
 
-  if (isLoading) {
-    return <div className={styles["no-heroes-list"]}>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div className={styles["no-heroes-list"]}>Loading...</div>;
+  // }
 
   if (isError) {
     return <div className={styles["no-heroes-list"]}>Error: {error.message}</div>;

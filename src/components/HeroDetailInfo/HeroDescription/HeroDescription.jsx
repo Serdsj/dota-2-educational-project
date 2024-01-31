@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { HeroDataContext } from "../../../pages/HeroPage/HeroPage";
 import { nameAttributesHero, attributesHero } from "./heroDataDescription";
-import { HeroBioOrHype } from "./HeroBioOrHype/HeroBioOrHype";
+import { HeroBioOrHype } from "./HeroDescriptionBioOrHype/HeroDescriptionBioOrHype";
+import { mediaLinks } from "../../../shared/utils/createUrl";
 import HeroNavigator from "../HeroNavigator/HeroNavigator";
 import heroDescpStyle from "./HeroDescription.module.scss";
 import HeroAbilities from "../HeroAbilities/HeroAbilities";
-import TreeOfTalents from "../HeroTreeOfTalents/TreeOfTalents";
+import TreeOfTalents from "../HeroTreeOfTalents/HeroTreeOfTalents";
 
 export default function HeroDescription() {
   const { currentHeroData, prevHeroData, nextHeroData } =
@@ -23,10 +24,8 @@ export default function HeroDescription() {
     !nextHero ||
     nextHero.length === 0
   ) {
-    return <div>Loading or no data available</div>;
+    return <section className={heroDescpStyle["hero-description"]}> </section>;
   }
-
-  // console.log(currentHero);
 
   const {
     name_loc,
@@ -54,6 +53,39 @@ export default function HeroDescription() {
   return (
     <section className={heroDescpStyle["hero-description"]}>
       <div className={heroDescpStyle["background-line"]}></div>
+      <div className={heroDescpStyle["wrapper-hero-video"]} >
+        <video
+          className={heroDescpStyle["hero-video"]} 
+          key={currentName}
+          autoPlay={true} 
+          preload="auto"
+          loop
+          playsInline
+          muted
+          poster={mediaLinks.createUrl({
+            type: "heroVideo",
+            heroName: currentName,
+            formatVideo: "jpg", 
+          })}
+        >
+          <source
+            type="video/webm"
+            src={mediaLinks.createUrl({
+              type: "heroVideo",
+              heroName: currentName,
+              formatVideo: "webm",
+            })}
+          />
+
+          <img src={mediaLinks.createUrl({
+            type: "heroVideo",
+            heroName: currentName,
+            formatVideo: "jpg", 
+          })} alt={`picture of hero ${currentName}`} />
+
+        </video>
+      </div>
+      <div className={heroDescpStyle["background-fade-bottom"]}></div>
       <div className={`${heroDescpStyle["hero-vertical-bar"]}`}>
         <img
           src={currentAttributeHero}
@@ -93,8 +125,8 @@ export default function HeroDescription() {
       <div className={heroDescpStyle["wrapper-top-skills-bar"]}>
         <h3 className={heroDescpStyle["title-abilities"]}>ABILITIES</h3>
         <div className={heroDescpStyle["wrapper-talents-abilities"]}>
-          {/* <HeroAbilities heroAbilities={abilities} /> */}
-          <TreeOfTalents heroTalents={talents} />
+          <TreeOfTalents heroTalents={talents} heroData={currentHero[0]} />
+          <HeroAbilities heroData={currentHero[0]} />
         </div>
       </div>
     </section>

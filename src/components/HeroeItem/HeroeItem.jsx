@@ -45,6 +45,3 @@ export default function HeroeItem({ url, id, localName, attr, isVisible }) {
     </li>
   );
 }
-
-
-//   <NavLink to={`hero/${localName.name_loc}`} onClick={extractId} className="link-description">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import heroBioOrHypeStyle from "./HeroBioOrHype.module.scss";
+import heroBioOrHypeStyle from "./HeroDescriptionBioOrHype.module.scss";
 import parse from "html-react-parser";
 import melee from "../../../../img/melee.svg";
 import ranged from "../../../../img/ranged.svg";
@@ -11,21 +11,12 @@ export function HeroBioOrHype({
   typeAttack,
   complexity,
 }) {
-  // const [isBioHero, setIsBioHero] = useState(true);
-  // const [isHypeHero, setIsHypeHero] = useState(true);
+
   const [isVisibleText, setIsVisibleText] = useState(true);
 
   const updatedTextHype = hypeHero
     .replace(/<b>/g, `<span className="${heroBioOrHypeStyle["bold"]}">`)
     .replace(/<\/b>/g, `</span>`);
-
-  // const toggleBioHero = () => {
-  //   setIsBioHero(!isBioHero);
-  // };
-
-  // const toggleHypeHero = () => {
-  //   setIsHypeHero(!isHypeHero);
-  // };
 
   const toggleText = () => {
     setIsVisibleText(!isVisibleText)
@@ -35,7 +26,6 @@ export function HeroBioOrHype({
     <div className={heroBioOrHypeStyle["hero-bio-or-hype"]}>   
       <div
         className={`${heroBioOrHypeStyle["wrapper-bio-hero"]} ${isVisibleText ? heroBioOrHypeStyle["hidden-text-bio"] : ""} `}
-        // ${heroBioOrHypeStyle["hidden-text-bio"]}
       >
         <p className={heroBioOrHypeStyle["bio-hero-text"]}>{parse(bioHero)}</p>
         <button
@@ -96,12 +86,3 @@ export function HeroBioOrHype({
     </div>
   );
 }
-
-// const parts = text.split('<b>');
-// const newText = parts.map(part => {
-//   const subParts = part.split('</b>');
-//   if (subParts.length > 1) {
-//     return `<span className="${heroDescpStyle.bold}">${subParts[0]}</span>${subParts[1]}`;
-//   }
-//   return part;
-// }).join('');

@@ -24,8 +24,23 @@
   }
 }
 
+@keyframes slideMoveRight {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+// .move-right-animation {
+//   animation: slideRight 1.5s ease-out forwards;
+// }
+
 @keyframes opacityBackground {
-  from { 
+  from {
     opacity: 0;
   }
   to {
@@ -35,49 +50,91 @@
 
 .background-line {
   width: 150%;
-    height: 650px;
-    background-color: #00000060;
-    position: absolute;
-    transform: skewY(-45deg) translateX(-50vw);
-    overflow: hidden;
-    z-index: 10;
-    animation-duration: 1.5s;
-    animation-timing-function: ease-out;
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-name: opacityBackground;
+  height: 650px;
+  background-color: #00000060;
+  position: absolute;
+  transform: skewY(-45deg) translateX(-50vw);
+  overflow: hidden;
+  z-index: 10;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-name: opacityBackground;
 }
 
 .wrapper-top-skills-bar {
   position: absolute;
-    right: 140px;
-    bottom: 80px;
-    width: fit-content;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    z-index: 20;
-    // animation-duration: 1s;
-    // animation-timing-function: ease-out;
-    // animation-delay: 0s;
-    // animation-iteration-count: 1;
-    // animation-name: heropage_topAbilitiesIn_I2RNu;
+  right: 140px;
+  bottom: 80px;
+  width: fit-content;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-name: slideUp;
 
-    .title-abilities {
-      color: #fff;
+  .title-abilities {
+    color: #fff;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 6px;
     text-align: center;
-    }
+    font-size: 18px;
+  }
 
-    .wrapper-talents-abilities {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-    }
+  .wrapper-talents-abilities {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
+.wrapper-hero-video {
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  right: -5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  align-items: flex-start;
+  top: -8%;
+  z-index: 10;
+  animation-duration: 1.3s;
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-name: slideMoveRight;
+
+  .hero-video {
+    width: 100%;
+    min-height: 100%;
+    max-width: 1500px;
+    mask-image: linear-gradient(to top, transparent 10%, black 50%);
+  }
+}
+
+.background-fade-bottom {
+  position: absolute;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0) 70%,
+    rgba(0, 0, 0, 0.733) 100%,
+    rgb(0, 0, 0) 100%
+  );
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  pointer-events: none;
 }
 
 .hero-description {
@@ -146,12 +203,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    z-index: 2;
-    // animation-duration: 1s;
-    // animation-timing-function: ease-out;
-    // animation-delay: 0s;
-    // animation-iteration-count: 1;
-    // animation-name: heropage_heroInfoIn_2pSnE;
+    z-index: 10;
   }
 
   .attribute {
@@ -185,6 +237,6 @@
     letter-spacing: 2px;
     color: #a5e0f3;
     margin-top: 5px;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
   }
 }

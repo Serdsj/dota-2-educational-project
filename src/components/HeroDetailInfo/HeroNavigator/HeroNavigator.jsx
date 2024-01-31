@@ -1,7 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import styleNavigator from "./HeroNavigator.module.scss";
-import { useLocation, useParams } from 'react-router-dom';
-
 
 export default function HeroNavigator({ prevName, nextName}) {
  
