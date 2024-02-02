@@ -8,6 +8,7 @@ import heroDescpStyle from "./HeroDescription.module.scss";
 import HeroAbilities from "../HeroAbilities/HeroAbilities";
 import TreeOfTalents from "../HeroTreeOfTalents/HeroTreeOfTalents";
 
+
 export default function HeroDescription() {
   const { currentHeroData, prevHeroData, nextHeroData } =
     useContext(HeroDataContext);
@@ -49,7 +50,6 @@ export default function HeroDescription() {
 
   const currentAttributeHero = attributesHero[primary_attr] ?? null; // картинка атрибута
   const currentNameAttrHero = nameAttributesHero[primary_attr] ?? null; // название атрибута
-
   return (
     <section className={heroDescpStyle["hero-description"]}>
       <div className={heroDescpStyle["background-line"]}></div>

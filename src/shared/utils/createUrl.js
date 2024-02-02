@@ -112,7 +112,11 @@ export class HeroUrlCreator {
 
   changeHeroVideo(name, format) {
     this.validateInputs(name, format);
-    const formattedName = this.replaceHeroName(this.formatString(name));
+    const formattedName = this.replaceHeroName(this.formatString(name))
+      .split("'")
+      .join("")
+      .split(".")
+      .join("");
     const formattedFormat = format.toLowerCase();
     return `${formattedName}.${formattedFormat}`;
   }
@@ -130,7 +134,11 @@ export class HeroUrlCreator {
   changeSkillVideo(heroName, abilityName, format) {
     this.validateInputs(heroName, abilityName, format);
     const formattedHeroName = this.formatString(heroName);
-    const formattedAbilityName = this.formatString(abilityName);
+    const formattedAbilityName = this.formatString(abilityName)
+      .split("'")
+      .join("")
+      .split(".")
+      .join("");
     const formattedFormat = format.toLowerCase();
     return `${formattedHeroName}/${formattedHeroName}_${formattedAbilityName}.${formattedFormat}`;
   }

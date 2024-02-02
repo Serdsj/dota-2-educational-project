@@ -51,7 +51,6 @@ export default function HeroAttrsRolsStat() {
 
   const integeraManaReg = Math.floor(mana_regen * 10) / 10;
   const integerHealthReg = Math.ceil(health_regen * 10) / 10;
-  // const defenses = [armor.toFixed(1), `${magic_resistance}%`];
 
 
   const roleNames = [
@@ -77,6 +76,7 @@ export default function HeroAttrsRolsStat() {
                   type: "heroImg",
                   heroName: name_loc,
                 })}
+                key={name_loc}
                 alt={`picture of ${name_loc}`}
                 className={styleAttrRolStar["hero-small-icon"]}
               />

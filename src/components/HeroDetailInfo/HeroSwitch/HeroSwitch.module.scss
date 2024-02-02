@@ -1,0 +1,135 @@
+.heroes-switch {
+  width: 100%;
+  height: 150px;
+  background-color: #111;
+  z-index: 1;
+  margin: 0 auto;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .wrapper-boxes {
+    width: 100px;
+    height: 69px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .box {
+      width: 30px;
+      height: 30px;
+      background-color: #9e9fa0;
+    }
+  }
+
+  .all-heroes-name {
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 8px;
+    text-align: center;
+    font-family: "Radiance","Noto Sans",sans-serif;
+    margin-left: 5px 
+  }
+
+  .switch-hero {
+    width: 45%;
+    height: 150px;
+    position: relative;
+    padding: 0px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../../../img/grey_painterly_wide.png);
+    box-shadow: 2px 2px 6px #000;
+    transition-property: filter, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+
+    &:hover .hero-portrait-img {
+        transform: translateY(-10px);
+    }
+  }
+
+  .position-link {
+    justify-content: flex-end;
+  }
+
+  .hero-portrait-img {
+    position: absolute;
+    bottom: -20px;
+    width: 400px;
+    right: 0px;
+    transition-duration: 0.3s;
+  }
+
+  .left-position {
+    left: 0px;
+  }
+
+  .right-position {
+    right: 0px;
+  }
+
+  .some-hero-info {
+    width: 250px;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 6;
+    font-family: "Radiance", "Noto Sans", sans-serif;
+
+    .switch-name {
+      font-size: 15px;
+      color: #9f9f9f;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 4px #000;
+      margin-bottom: 5px;
+    }
+
+    .name {
+      font-size: 28px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: "Reaver", serif;
+      font-weight: bold;
+      line-height: 112%;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    .hero-attr-type-attack {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-attr {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      filter: drop-shadow(1px 1px 4px black);
+    }
+
+    .type-of-attack {
+      color: #ddd;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 4px #000;
+    }
+  }
+}

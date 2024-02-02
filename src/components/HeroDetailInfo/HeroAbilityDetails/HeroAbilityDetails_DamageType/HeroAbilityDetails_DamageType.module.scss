@@ -1,0 +1,18 @@
+.type-attack {
+    font-size: 14px;
+    color: #737373;
+    // text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 4px;
+
+    .type-attack-value {
+      margin-left: 4px;
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0px;
+      text-transform: none;
+    }
+   }

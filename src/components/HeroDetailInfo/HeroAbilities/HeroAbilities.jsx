@@ -1,9 +1,14 @@
 import styleAbilities from "./HeroAbilities.module.scss";
 import { mediaLinks } from "../../../shared/utils/createUrl";
+import { useContext } from "react";
+import {AbilityContext} from "../HeroDetailnfo"
 import { formattingText } from "../../../shared/utils/formattingText";
 import parse from "html-react-parser";
 
 export default function HeroAbilities({ heroData }) {
+
+  const { handleAbilityClick } = useContext(AbilityContext);
+  console.log(handleAbilityClick)
 
   const filtredAbilities = heroData.abilities
     .filter(
@@ -21,6 +26,7 @@ export default function HeroAbilities({ heroData }) {
               <li
                 key={item.id}
                 className={styleAbilities["hero-abilities-item"]}
+                onClick = {() => handleAbilityClick(item)}
               >
                 <img
                   className={styleAbilities["hero-ability-icon"]}
@@ -30,6 +36,7 @@ export default function HeroAbilities({ heroData }) {
                     abilityName: item.name,
                   })}
                   alt={`ability picture: ${item.name_loc}`}
+                  onClick={() => console.log("click!!!")}
                 />
                 <div className={styleAbilities["description-ability"]}>
                   <div className={styleAbilities["tootip-body"]}>
