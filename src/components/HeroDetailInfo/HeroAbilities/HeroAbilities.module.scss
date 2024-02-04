@@ -21,14 +21,14 @@
     }
 
     &:hover .description-ability {
-        display: block;
+        opacity: 1;
     }
 
     .description-ability {
       width: 300px;
       position: absolute;
       transform: translateY(-100%) translateY(-84px) translateX(-100px);
-      display: none;
+      opacity: 0;
       filter: drop-shadow(2px 2px 8px black);
 
       .tootip-body {

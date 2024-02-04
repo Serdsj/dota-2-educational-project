@@ -1,24 +1,19 @@
 import { useState, useEffect } from "react";
 
-export function useCurrentAbilityData(heroData) {
+export function useCurrentAbilityData(heroAbilities) {
   const [abilityData, setAbilityData] = useState(null);
   const [activeAbilityId, setActiveAbilityId] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    if (
-      !heroData ||
-      heroData.length === 0 ||
-      !heroData[0].abilities ||
-      heroData[0].abilities.length === 0
-    ) {
+    if (!heroAbilities || heroAbilities.length === 0) {
       return;
     }
     // Установка начального значения для abilityData с первой способностью из списка
-    const firstAbility = heroData[0].abilities[0];
+    const firstAbility = heroAbilities[0];
     setAbilityData(firstAbility);
     setActiveAbilityId(firstAbility.id);
-  }, [heroData]); // Эффект срабатывает при изменении heroData
+  }, [heroAbilities]); // Эффект срабатывает при изменении heroData
 
   useEffect(() => {
     if (isAnimating) {

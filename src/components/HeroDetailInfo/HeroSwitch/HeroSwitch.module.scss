@@ -10,6 +10,14 @@
   justify-content: space-between;
   align-items: center;
 
+
+  .all-heroes {
+
+    &:hover .wrapper-boxes {
+      filter: brightness(1.6);
+    }
+  }
+
   .wrapper-boxes {
     width: 100px;
     height: 69px;
@@ -34,7 +42,7 @@
     margin-top: 8px;
     text-align: center;
     font-family: "Radiance","Noto Sans",sans-serif;
-    margin-left: 5px 
+    margin-left: 5px;
   }
 
   .switch-hero {

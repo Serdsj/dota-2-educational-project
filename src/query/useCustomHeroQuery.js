@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
 export function useCustomHeroQuery(idHero, fetch) {
-  //   const getId = (id) => (id !== null ? fetch(id) : null);
-
   const query = useQuery({
     queryKey: ["heroData", idHero],
     queryFn: () => (idHero !== null ? fetch({ id: idHero }) : null),
@@ -14,5 +12,3 @@ export function useCustomHeroQuery(idHero, fetch) {
 
   return query;
 }
-
-// (idHero !== null ? fetch({ id: idHero }) : null)

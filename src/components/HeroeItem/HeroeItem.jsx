@@ -16,10 +16,13 @@ export default function HeroeItem({ url, id, localName, attr, isVisible }) {
   const currentAttribute = attributes[attr] ?? null;
 
   const changeName = localName.toLowerCase().split(" ").join("");
+  const handlerScrollTop = function () {
+    window.scrollTo(0, 0);
+  } 
 
   return (
     <li className= { `${!isVisible ? styleHitem["fade-out-then-move-left"] : styleHitem["fade-in-move-right"] }`}>
-     <NavLink to={`hero/${changeName}`} className="link-description">
+     <NavLink  onClick={handlerScrollTop} to={`hero/${changeName}`} className="link-description">
         <div
           className={`${styleHitem["heroe"]}`}
           data-id={id}

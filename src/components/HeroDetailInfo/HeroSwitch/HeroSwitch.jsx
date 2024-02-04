@@ -30,12 +30,16 @@ export default function HeroSwitch() {
   const nextHeroPath = pathname.replace(heroName, nextName);
   const prevHeroAttr = attributesHero[prevHero[0].primary_attr] ?? null;
   const nextHeroAttr = attributesHero[nextHero[0].primary_attr] ?? null;
+  const handlerScrollTop = function () {
+    window.scrollTo(0, 0);
+  } 
 
   return (
     <div className={styleHeroSwitch["heroes-switch"]}>
       <NavLink
         to={prevHeroPath}
         className={`${styleHeroSwitch["switch-hero"]} ${styleHeroSwitch["position-link"]}`}
+        onClick={handlerScrollTop}
       >
        
           <img src={mediaLinks.createUrl({
@@ -55,7 +59,7 @@ export default function HeroSwitch() {
        
         </div>
       </NavLink>
-      <NavLink to="/" className={styleHeroSwitch["all-heroes"]}>
+      <NavLink onClick={handlerScrollTop} to="/" className={styleHeroSwitch["all-heroes"]}>
         <div className={styleHeroSwitch["wrapper-boxes"]}>
           <div className={styleHeroSwitch["box"]}></div>
           <div className={styleHeroSwitch["box"]}></div>
@@ -67,7 +71,7 @@ export default function HeroSwitch() {
 
         <span className={styleHeroSwitch["all-heroes-name"]}> ALL HEROES </span>
       </NavLink>
-      <NavLink to={nextHeroPath} className={styleHeroSwitch["switch-hero"]}>
+      <NavLink onClick={handlerScrollTop} to={nextHeroPath} className={styleHeroSwitch["switch-hero"]}>
       <img src={mediaLinks.createUrl({
             type: "heroPortrait",
             heroName: nextHeroName,

@@ -8,11 +8,15 @@ export default function HeroNavigator({ prevName, nextName}) {
 
   const prevHeroPath = pathname.replace( heroName, prevName );
  const nextHeroPath = pathname.replace( heroName, nextName );
-  
+
+ const handlerScrollTop = function () {
+  window.scrollTo(0, 0);
+} 
+
   return (
     <div className={styleNavigator["wrapper-navigator"]}>
-      <NavLink to={prevHeroPath} className={styleNavigator["arrow"]}></NavLink>
-      <NavLink  to="/" className={styleNavigator["centre-link"]}>
+      <NavLink  onClick={handlerScrollTop} to={prevHeroPath} className={styleNavigator["arrow"]}></NavLink>
+      <NavLink  onClick={handlerScrollTop}  to="/" className={styleNavigator["centre-link"]}>
         <div className={styleNavigator["style-box"]}></div>
         <div className={styleNavigator["style-box"]}></div>
         <div className={styleNavigator["style-box"]}></div>
@@ -20,7 +24,7 @@ export default function HeroNavigator({ prevName, nextName}) {
         <div className={styleNavigator["style-box"]}></div>
         <div className={styleNavigator["style-box"]}></div>
       </NavLink>
-      <NavLink to={nextHeroPath} className={`${styleNavigator["arrow"]} ${styleNavigator["right-arrow"]}`}></NavLink>
+      <NavLink  onClick={handlerScrollTop} to={nextHeroPath} className={`${styleNavigator["arrow"]} ${styleNavigator["right-arrow"]}`}></NavLink>
     </div>
   );
 }

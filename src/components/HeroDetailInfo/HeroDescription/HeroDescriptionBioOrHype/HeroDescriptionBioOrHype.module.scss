@@ -146,3 +146,37 @@
   }
 }
 
+
+
+@media (max-width:1300px) {
+
+  .hero-bio-or-hype {
+    width: 100%;
+    max-height: 100px;
+    height: 0px;
+    min-height: 0px;
+
+    .wrapper-hype-hero {
+      width: 95%;
+    }
+  
+    .wrapper-bio-hero {
+      display: none;
+    }
+
+    .wrapper-attack-type {
+      display: none;
+    }
+  
+    .wrapper-complexity {
+      display: none;
+    }
+
+    .style-button-toggle-text {
+      display: none;
+    }
+  }
+}
+
+
+

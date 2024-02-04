@@ -37,7 +37,6 @@ export default function HeroDescription() {
     id,
     attack_capability,
     bio_loc,
-    abilities,
     talents,
   } = currentHero[0];
   const { name_loc: prevHeroName } = prevHero[0];

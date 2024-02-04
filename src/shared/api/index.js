@@ -1,4 +1,5 @@
 import { CONFIG } from "../config/";
+import { chooseLinkAbilVideo } from "../utils/chooseLinkAbilVideo";
 
 export const getHeroStats = async (params = {}) => {
   // старая API много данных
@@ -34,4 +35,21 @@ export const getHeroData = async ({ id }) => {
   const response = await fetch(api).then((resp) => resp.json());
 
   return response;
+};
+
+export const getAbilityVideo = async (
+  abilityData,
+  currentHero,
+  format,
+  nameLoc
+) => {
+  return await chooseLinkAbilVideo(
+    abilityData.ability_has_shard,
+    abilityData.ability_is_granted_by_shard,
+    abilityData.ability_has_scepter,
+    abilityData.ability_is_granted_by_scepter,
+    currentHero[0].name_loc,
+    format,
+    nameLoc
+  );
 };

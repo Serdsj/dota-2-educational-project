@@ -1,14 +1,13 @@
 import styleAbilities from "./HeroAbilities.module.scss";
 import { mediaLinks } from "../../../shared/utils/createUrl";
 import { useContext } from "react";
-import {AbilityContext} from "../HeroDetailnfo"
+import {AbilityContext} from "../HeroDetailnfo";
 import { formattingText } from "../../../shared/utils/formattingText";
 import parse from "html-react-parser";
 
 export default function HeroAbilities({ heroData }) {
 
-  const { handleAbilityClick } = useContext(AbilityContext);
-  console.log(handleAbilityClick)
+  const { handleAbilityClick, scollToRef } = useContext(AbilityContext);
 
   const filtredAbilities = heroData.abilities
     .filter(
@@ -36,7 +35,7 @@ export default function HeroAbilities({ heroData }) {
                     abilityName: item.name,
                   })}
                   alt={`ability picture: ${item.name_loc}`}
-                  onClick={() => console.log("click!!!")}
+                  onClick={() => scollToRef.current.scrollIntoView({ behavior: 'smooth' })}
                 />
                 <div className={styleAbilities["description-ability"]}>
                   <div className={styleAbilities["tootip-body"]}>
@@ -51,7 +50,7 @@ export default function HeroAbilities({ heroData }) {
                         poster={mediaLinks.createUrl({
                           type: "abilityVideo",
                           heroName: heroData.name_loc,
-                          abilityName: item.name_loc,
+                          abilityName: item.name,
                           formatVideo: "jpg",
                         })}
                       >
@@ -60,7 +59,7 @@ export default function HeroAbilities({ heroData }) {
                           src={mediaLinks.createUrl({
                             type: "abilityVideo",
                             heroName: heroData.name_loc,
-                            abilityName: item.name_loc,
+                            abilityName:  item.name,
                             formatVideo: "webm",
                           })}
                         />
@@ -69,7 +68,7 @@ export default function HeroAbilities({ heroData }) {
                           src={mediaLinks.createUrl({
                             type: "abilityVideo",
                             heroName: heroData.name_loc,
-                            abilityName: item.name_loc,
+                            abilityName:  item.name,
                             formatVideo: "mp4",
                           })}
                         />

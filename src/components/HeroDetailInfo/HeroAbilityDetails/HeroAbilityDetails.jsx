@@ -1,31 +1,38 @@
 import { useContext } from "react";
+import {AbilityContext} from "../HeroDetailnfo";
 import { HeroDataContext } from "../../../pages/HeroPage/HeroPage";
-import { useCurrentAbilityData } from "../useCurrentAbilityData";
 import { DamageType } from "./HeroAbilityDetails_DamageType/HeroAbilityDetails_DamageType";
 import styleAbilityDetail from "./HeroAbilityDetails.module.scss";
 import { mediaLinks } from "../../../shared/utils/createUrl";
-import { chooseLinkAbilVideo } from "./chooseLinkAbilVideo";
-import { formattingText } from "../../../shared/utils/formattingText";
+import { chooseLinkAbilVideo } from "../../../shared/utils/chooseLinkAbilVideo";
+import {
+  formattingText,
+  formattingTextShard,
+  formattingTextScepter,
+} from "../../../shared/utils/formattingText";
 import cooldownPicture from "../../../img/cooldown.png";
 import parse from "html-react-parser";
 
-export default function HeroAbilityDetails({abilityData, activeAbilityId, isAnimating, handleAbilityClick}) {
+export default function HeroAbilityDetails({
+  abilityData,
+  activeAbilityId,
+  isAnimating,
+  handleAbilityClick,
+  allAbilities,
+}) {
   const { currentHeroData } = useContext(HeroDataContext);
   const { data: currentHero } = currentHeroData;
-  // const { abilityData, activeAbilityId, isAnimating, handleAbilityClick } =
-  //   useCurrentAbilityData(currentHero);
+  const { scollToRef } = useContext(AbilityContext);
 
   if (!abilityData) {
     return <div></div>;
   }
 
   const isActive = (currentId, activeId) => currentId === activeId;
-  const { abilities } = currentHero[0];
   const {
     name_loc,
     damage,
     cooldowns,
-    desc_loc,
     lore_loc,
     mana_costs,
     name,
@@ -33,6 +40,12 @@ export default function HeroAbilityDetails({abilityData, activeAbilityId, isAnim
     dispellable,
     durations,
     immunity,
+    ability_is_granted_by_shard,
+    ability_is_granted_by_scepter,
+    ability_has_scepter,
+    ability_has_shard,
+    id,
+    desc_loc,
   } = abilityData;
 
   return (
@@ -56,44 +69,58 @@ export default function HeroAbilityDetails({abilityData, activeAbilityId, isAnim
               playsInline
               muted
               poster={chooseLinkAbilVideo(
-                abilityData.ability_is_granted_by_shard,
-                abilityData.ability_is_granted_by_scepter,
+                desc_loc,
+                ability_has_shard,
+                ability_is_granted_by_shard,
+                ability_has_scepter,
+                ability_is_granted_by_scepter,
                 currentHero[0].name_loc,
                 "jpg",
-                abilityData.name_loc
+                name
               )}
             >
               <source
                 type="video/webm"
                 src={chooseLinkAbilVideo(
-                  abilityData.ability_is_granted_by_shard,
-                  abilityData.ability_is_granted_by_scepter,
+                  desc_loc,
+                  ability_has_shard,
+                  ability_is_granted_by_shard,
+                  ability_has_scepter,
+                  ability_is_granted_by_scepter,
                   currentHero[0].name_loc,
                   "webm",
-                  abilityData.name_loc
+                  name
                 )}
               />
               <source
                 type="video/mp4"
                 src={chooseLinkAbilVideo(
-                  abilityData.ability_is_granted_by_shard,
-                  abilityData.ability_is_granted_by_scepter,
+                  desc_loc,
+                  ability_has_shard,
+                  ability_is_granted_by_shard,
+                  ability_has_scepter,
+                  ability_is_granted_by_scepter,
                   currentHero[0].name_loc,
                   "mp4",
-                  abilityData.name_loc
+                  name
                 )}
               />
             </video>
           </div>
-          <ul className={styleAbilityDetail["ability-selector-list"]}>
-            {abilities.map(function (currentAbil) {
+          <ul ref={scollToRef} className={styleAbilityDetail["ability-selector-list"]}>
+            {allAbilities.map(function (currentAbil) {
               let order = 0; // это переменная для порядка элементов в flex контейнере
-              let bcAganim = (<div className={styleAbilityDetail["special-abil"]}></div>);
-              // let abilityWithShard;
+              let bcAganim = (
+                <div className={styleAbilityDetail["special-abil"]}></div>
+              );
 
               if (currentAbil.ability_is_granted_by_shard) order = 1;
               if (currentAbil.ability_is_granted_by_scepter) order = 2;
-             
+              if (currentAbil.ability_has_shard && !currentAbil.desc_loc)
+                order = 1;
+              if (currentAbil.ability_has_scepter && !currentAbil.desc_loc)
+                order = 1;
+
               let currentElement = (
                 <div
                   style={{
@@ -142,22 +169,46 @@ export default function HeroAbilityDetails({abilityData, activeAbilityId, isAnim
                 <h3 className={styleAbilityDetail["name-of-ability"]}>
                   {name_loc}
                 </h3>
-                {abilityData.ability_is_granted_by_scepter ? (
+                {ability_is_granted_by_scepter ? (
                   <p className={styleAbilityDetail["text-new-abil"]}>
                     SCEPTER GRANTS NEW ABILITY
                   </p>
                 ) : (
                   ""
                 )}
-                {abilityData.ability_is_granted_by_shard ? (
+                {ability_is_granted_by_shard ? (
                   <p className={styleAbilityDetail["text-new-abil"]}>
                     SHARD GRANTS NEW ABILITY
                   </p>
                 ) : (
                   ""
                 )}
+                {ability_has_shard &&
+                !desc_loc &&
+                !ability_is_granted_by_shard ? (
+                  <p className={styleAbilityDetail["text-new-abil"]}>
+                    SHARD ABILITY UPGRADE
+                  </p>
+                ) : (
+                  ""
+                )}
+                {ability_has_scepter &&
+                !desc_loc &&
+                !ability_is_granted_by_scepter ? (
+                  <p className={styleAbilityDetail["text-new-abil"]}>
+                    SCEPTER ABILITY UPGRADE
+                  </p>
+                ) : (
+                  ""
+                )}
                 <p className={styleAbilityDetail["text-description-abil"]}>
-                  {parse(formattingText(abilityData))}
+                  {desc_loc ? parse(formattingText(abilityData)) : ""}
+                  {!desc_loc && ability_has_shard
+                    ? parse(formattingTextShard(abilityData))
+                    : ""}
+                  {!desc_loc && ability_has_scepter
+                    ? parse(formattingTextScepter(abilityData))
+                    : ""}
                 </p>
               </div>
             </div>
@@ -177,14 +228,13 @@ export default function HeroAbilityDetails({abilityData, activeAbilityId, isAnim
                       <span
                         className={styleAbilityDetail["specific-value-item"]}
                       >
-                        {" "}
                         {immunity === 3 ? "Yes" : "No"}
                       </span>
                     </div>
                   ) : (
                     ""
                   )}
-                    {dispellable !== 0 ? (
+                  {dispellable !== 0 ? (
                     <div
                       className={
                         styleAbilityDetail["wrapper-specific-values-item"]
@@ -202,33 +252,47 @@ export default function HeroAbilityDetails({abilityData, activeAbilityId, isAnim
                   )}
                 </div>
               </div>
-              <div className={styleAbilityDetail["specific-values"]}>
-                {special_values.map(function (item) {
-                  if (item.heading_loc) {
-                    return (
-                      <div
-                      key={item.heading_loc}
-                        className={
-                          styleAbilityDetail["wrapper-specific-values-item"]
+              {abilityData.desc_loc === "" ? (
+                ""
+              ) : (
+                <div className={styleAbilityDetail["specific-values"]}>
+                  {special_values.length === 0
+                    ? ""
+                    : special_values.map(function (item) {
+                        if (item.heading_loc) {
+                          return (
+                            <div
+                              key={item.heading_loc}
+                              className={
+                                styleAbilityDetail[
+                                  "wrapper-specific-values-item"
+                                ]
+                              }
+                            >
+                              <span
+                                className={
+                                  styleAbilityDetail["name-of-specific-value"]
+                                }
+                              >
+                                {parse(item.heading_loc)}
+                              </span>
+                              <span
+                                className={
+                                  styleAbilityDetail["specific-value-item"]
+                                }
+                              >
+                                {item.is_percentage
+                                  ? item.values_float
+                                      .map((number) => `${number}%`)
+                                      .join(" / ")
+                                  : item.values_float.join("/")}
+                              </span>
+                            </div>
+                          );
                         }
-                      >
-                        <span
-                          className={
-                            styleAbilityDetail["name-of-specific-value"]
-                          }
-                        >
-                          {parse(item.heading_loc)} 
-                        </span>
-                        <span
-                          className={styleAbilityDetail["specific-value-item"]}
-                        >
-                          {item.values_float.join("/")}
-                        </span>
-                      </div>
-                    );
-                  }
-                })}
-              </div>
+                      })}
+                </div>
+              )}
               {cooldowns[0] === 0 && mana_costs[0] === 0 ? (
                 ""
               ) : (
