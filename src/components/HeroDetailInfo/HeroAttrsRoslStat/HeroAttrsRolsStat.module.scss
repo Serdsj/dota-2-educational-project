@@ -252,7 +252,7 @@ ul {
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-family: "Radiance","Noto Sans",sans-serif;
+      font-family: "Radiance", "Noto Sans", sans-serif;
 
       .stats-list {
         width: 100%;
@@ -288,6 +288,68 @@ ul {
           font-size: 16px;
           text-align: left;
           gap: 7px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .wrapper-attrs-rol-stat {
+    .attrs-rols-stat {
+      flex-direction: column;
+
+      .line-separator {
+        width: 100%;
+        height: 1px;
+      }
+
+      .title-block {
+        margin: 0px;
+      }
+
+      .attrs {
+        flex-direction: column-reverse;
+        width: 90%;
+
+        .wrapper-hero-attrs {
+          margin-bottom: 15px;
+          margin-top: 15px;
+        }
+      }
+
+      .roles {
+        flex-direction: column-reverse;
+        width: 90%;
+
+        .roles-list {
+          margin-top: 10px;
+          margin-bottom: 15px;
+        }
+      }
+
+      .stats {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .wrapper-attrs-rol-stat {
+
+    .attrs-rols-stat {
+
+      .stats {
+
+        .stats-list {
+          margin-top: 15px;
+          justify-content: center;
+          gap: 15px;
+
+          .stats-item {
+            width: 20%
+          }
         }
       }
     }

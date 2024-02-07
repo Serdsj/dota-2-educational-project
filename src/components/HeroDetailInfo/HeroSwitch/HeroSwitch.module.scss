@@ -9,6 +9,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
 
 
   .all-heroes {
@@ -78,7 +79,9 @@
   .hero-portrait-img {
     position: absolute;
     bottom: -20px;
-    width: 400px;
+    max-width: 100%;
+    height: auto;
+  
     right: 0px;
     transition-duration: 0.3s;
   }
@@ -92,7 +95,7 @@
   }
 
   .some-hero-info {
-    width: 250px;
+    max-width: 250px;
     min-height: 0;
     display: flex;
     flex-direction: column;
@@ -141,3 +144,55 @@
     }
   }
 }
+
+
+@media (max-width: 800px) { 
+
+  .heroes-switch {
+    
+    .switch-hero {
+      padding: 0px 10px;
+    }
+    .hero-portrait-img {
+      display: none;
+    }
+  }
+}
+
+
+@media (max-width: 600px) { 
+
+  .heroes-switch {
+    gap: 15px;
+    
+    .switch-hero {
+      padding: 0px 10px;
+
+      .some-hero-info {
+        font-size: 14px;
+        .name {
+          font-size: 14px;
+        }
+      }
+    }
+    .hero-portrait-img {
+      display: none;
+    }
+
+    .all-heroes {
+      display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .wrapper-boxes {
+      width: 70px;
+
+      .box {
+        width: 20px;
+      }
+    }
+  }
+}
+

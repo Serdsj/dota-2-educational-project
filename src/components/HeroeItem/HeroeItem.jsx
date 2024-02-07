@@ -1,5 +1,6 @@
 import styleHitem from "./HeroItem.module.scss";
 import { NavLink } from "react-router-dom";
+import PropTypes from 'prop-types';
 import agility from "../../img/hero_agility.png";
 import intelligence from "../../img/hero_intelligence.png";
 import strength from "../../img/hero_strength.png";
@@ -47,4 +48,13 @@ export default function HeroeItem({ url, id, localName, attr, isVisible }) {
       </NavLink>
     </li>
   );
+}
+
+
+HeroeItem.propTypes= {
+  url: PropTypes.string,
+  id: PropTypes.number,
+  localName: PropTypes.string,
+  attr: PropTypes.number, 
+  isVisible:  PropTypes.bool
 }

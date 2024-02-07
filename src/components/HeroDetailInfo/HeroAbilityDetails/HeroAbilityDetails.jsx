@@ -1,10 +1,12 @@
-import { useContext } from "react";
-import {AbilityContext} from "../HeroDetailnfo";
+import { useContext, useEffect } from "react";
+import PropTypes from "prop-types";
+import LazyLoad from "react-lazy-load";
+import { AbilityContext } from "../HeroDetailnfo";
 import { HeroDataContext } from "../../../pages/HeroPage/HeroPage";
 import { DamageType } from "./HeroAbilityDetails_DamageType/HeroAbilityDetails_DamageType";
 import styleAbilityDetail from "./HeroAbilityDetails.module.scss";
 import { mediaLinks } from "../../../shared/utils/createUrl";
-import { chooseLinkAbilVideo } from "../../../shared/utils/chooseLinkAbilVideo";
+import { getAbilityDetails } from "./getAbilityDetails/getAbilityDetails";
 import {
   formattingText,
   formattingTextShard,
@@ -38,15 +40,42 @@ export default function HeroAbilityDetails({
     name,
     special_values,
     dispellable,
-    durations,
     immunity,
     ability_is_granted_by_shard,
     ability_is_granted_by_scepter,
     ability_has_scepter,
     ability_has_shard,
-    id,
     desc_loc,
+    abilityVideoUrlJpg,
+    abilityVideoUrlMp4,
+    abilityVideoUrlWebm,
   } = abilityData;
+
+  const handleAbilityClicks = (clickedAbility) => {
+    // Скрыть все видео и остановить воспроизведение
+    allAbilities.forEach((ability) => {
+      const videoElement = document.querySelector(`.video-${ability.id}`);
+      if (videoElement) {
+        videoElement.style.display = "none";
+        videoElement.pause();
+        videoElement.currentTime = 0; // Сбросить время, если необходимо
+      }
+    });
+
+    // Найти и показать выбранное видео
+    const selectedVideoElement = document.querySelector(
+      `.video-${clickedAbility.id}`
+    );
+    if (selectedVideoElement) {
+      selectedVideoElement.style.display = "block"; // Или другой способ сделать видео видимым
+      const sources = selectedVideoElement.querySelectorAll("source");
+      sources.forEach((source) => {
+        source.src = source.dataset.src; // Установить источник из data-src
+      });
+      selectedVideoElement.load(); // Начать загрузку видео
+      selectedVideoElement.play(); // Автовоспроизведение, если требуется
+    }
+  };
 
   return (
     <section className={styleAbilityDetail["ability-details"]}>
@@ -55,91 +84,48 @@ export default function HeroAbilityDetails({
       <div className={styleAbilityDetail["wrapper-video-ability-description"]}>
         <div className={styleAbilityDetail["ability-left"]}>
           <div className={styleAbilityDetail["video-container"]}>
+            <ul className={"video-list"}>
+              {allAbilities.map((ability) => (
+                <li
+                  key={ability.id}
+                  className={"card"}
+                  style={{ display: "none" }}
+                >
+                  <video
+                    className={`lazy ${styleAbilityDetail["ability-video"]}`}
+                    key={ability.id}
+                    autoPlay
+                    preload="auto"
+                    loop
+                    playsInline
+                    muted
+                    data-poster={ability.abilityVideoUrlJpg}
+                  >
+                    <source
+                      data-src={ability.abilityVideoUrlWebm}
+                      type="video/webm"
+                    />
+                    <source
+                      data-src={ability.abilityVideoUrlMp4}
+                      type="video/mp4"
+                    />
+                  </video>
+                </li>
+              ))}
+            </ul>
             <div
               className={`${styleAbilityDetail["fade-out"]} ${
                 isAnimating ? styleAbilityDetail["fade-in"] : ""
               }`}
             ></div>
-            <video
-              className={styleAbilityDetail["ability-video"]}
-              key={abilityData.name_loc}
-              autoPlay={true} // autoPlay без значения равносильно autoPlay={true}
-              preload="auto"
-              loop
-              playsInline
-              muted
-              poster={chooseLinkAbilVideo(
-                desc_loc,
-                ability_has_shard,
-                ability_is_granted_by_shard,
-                ability_has_scepter,
-                ability_is_granted_by_scepter,
-                currentHero[0].name_loc,
-                "jpg",
-                name
-              )}
-            >
-              <source
-                type="video/webm"
-                src={chooseLinkAbilVideo(
-                  desc_loc,
-                  ability_has_shard,
-                  ability_is_granted_by_shard,
-                  ability_has_scepter,
-                  ability_is_granted_by_scepter,
-                  currentHero[0].name_loc,
-                  "webm",
-                  name
-                )}
-              />
-              <source
-                type="video/mp4"
-                src={chooseLinkAbilVideo(
-                  desc_loc,
-                  ability_has_shard,
-                  ability_is_granted_by_shard,
-                  ability_has_scepter,
-                  ability_is_granted_by_scepter,
-                  currentHero[0].name_loc,
-                  "mp4",
-                  name
-                )}
-              />
-            </video>
           </div>
-          <ul ref={scollToRef} className={styleAbilityDetail["ability-selector-list"]}>
+          <ul
+            ref={scollToRef}
+            className={styleAbilityDetail["ability-selector-list"]}
+          >
             {allAbilities.map(function (currentAbil) {
-              let order = 0; // это переменная для порядка элементов в flex контейнере
-              let bcAganim = (
-                <div className={styleAbilityDetail["special-abil"]}></div>
-              );
-
-              if (currentAbil.ability_is_granted_by_shard) order = 1;
-              if (currentAbil.ability_is_granted_by_scepter) order = 2;
-              if (currentAbil.ability_has_shard && !currentAbil.desc_loc)
-                order = 1;
-              if (currentAbil.ability_has_scepter && !currentAbil.desc_loc)
-                order = 1;
-
-              let currentElement = (
-                <div
-                  style={{
-                    backgroundImage: `url(${mediaLinks.createUrl({
-                      type: "abilityPicture",
-                      heroName: currentHero[0].name_loc,
-                      abilityName: currentAbil.name,
-                    })})`,
-                  }}
-                  className={`${styleAbilityDetail["switch-video"]} ${
-                    isActive(currentAbil.id, activeAbilityId)
-                      ? styleAbilityDetail["active-abil"]
-                      : styleAbilityDetail["faded-element"]
-                  }`}
-                >
-                  {order !== 0 ? bcAganim : ""}
-                </div>
-              );
-
+              const { bcAganim, bcShard, order } =
+                getAbilityDetails(currentAbil);
               return (
                 <li
                   key={currentAbil.id}
@@ -147,7 +133,22 @@ export default function HeroAbilityDetails({
                   className={styleAbilityDetail["ability-selector-item"]}
                   onClick={() => handleAbilityClick(currentAbil)}
                 >
-                  {currentElement}
+                  <div
+                    style={{
+                      backgroundImage: `url(${mediaLinks.createUrl({
+                        type: "abilityPicture",
+                        heroName: currentHero[0].name_loc,
+                        abilityName: currentAbil.name,
+                      })})`,
+                    }}
+                    className={`${styleAbilityDetail["switch-video"]} ${
+                      isActive(currentAbil.id, activeAbilityId)
+                        ? styleAbilityDetail["active-abil"]
+                        : styleAbilityDetail["faded-element"]
+                    }`}
+                  >
+                    {bcAganim || bcShard}
+                  </div>
                 </li>
               );
             })}
@@ -324,6 +325,44 @@ export default function HeroAbilityDetails({
     </section>
   );
 }
+
+HeroAbilityDetails.propTypes = {
+  abilityData: PropTypes.shape({
+    name_loc: PropTypes.string,
+    damage: PropTypes.number,
+    cooldowns: PropTypes.arrayOf(PropTypes.number),
+    lore_loc: PropTypes.string,
+    mana_costs: PropTypes.arrayOf(PropTypes.number),
+    name: PropTypes.string,
+    special_values: PropTypes.arrayOf(
+      PropTypes.shape({
+        heading_loc: PropTypes.string,
+        values_float: PropTypes.arrayOf(PropTypes.number),
+        is_percentage: PropTypes.bool,
+      })
+    ),
+    dispellable: PropTypes.number,
+    immunity: PropTypes.number,
+    ability_is_granted_by_scepter: PropTypes.bool,
+    ability_is_granted_by_shard: PropTypes.bool,
+    ability_has_scepter: PropTypes.bool,
+    ability_has_shard: PropTypes.bool,
+    desc_loc: PropTypes.string,
+    abilityVideoUrlJpg: PropTypes.string,
+    abilityVideoUrlMp4: PropTypes.string,
+    abilityVideoUrlWebm: PropTypes.string,
+    id: PropTypes.number,
+  }),
+  activeAbilityId: PropTypes.number,
+  isAnimating: PropTypes.bool,
+  handleAbilityClick: PropTypes.func.isRequired,
+  allAbilities: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ),
+};
 
 // damage 1 - это физа, 2 - это магия , 4 - это чистый
 // attack_capability - 1 это No Target

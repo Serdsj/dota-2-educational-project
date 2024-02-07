@@ -1,5 +1,6 @@
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import styleNavigator from "./HeroNavigator.module.scss";
+import PropTypes from 'prop-types';
 
 export default function HeroNavigator({ prevName, nextName}) {
  
@@ -27,4 +28,9 @@ export default function HeroNavigator({ prevName, nextName}) {
       <NavLink  onClick={handlerScrollTop} to={nextHeroPath} className={`${styleNavigator["arrow"]} ${styleNavigator["right-arrow"]}`}></NavLink>
     </div>
   );
+}
+
+HeroNavigator.propTypes= {
+  prevName: PropTypes.string,
+  nextName: PropTypes.string,
 }

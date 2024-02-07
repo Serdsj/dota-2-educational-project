@@ -1,10 +1,9 @@
 import HeroeItem from "../HeroeItem/HeroeItem";
 import stylesHList from "./HeroesList.module.scss";
-import { HeroUrlCreator, mediaLinks } from "../../shared/utils/createUrl";
+import { mediaLinks } from "../../shared/utils/createUrl";
+import PropTypes from 'prop-types';
 
 export default function HeroesList({ heroesData, currentFilterAttr, currentFilterComp, searchValue }) {
-
-  // const urlImg = new HeroUrlCreator(`${CONFIG.IMG_URL}/heroes`);
 
   const hasVisible = (currentData) => {
     // Если установлен фильтр по атрибутам и герой не соответствует этому фильтру
@@ -41,4 +40,11 @@ export default function HeroesList({ heroesData, currentFilterAttr, currentFilte
       })}
     </ul>
   );
+}
+
+HeroesList.propTypes= {
+  heroesData: PropTypes.array,
+  currentFilterAttr: PropTypes.number,
+  currentFilterComp: PropTypes.number,
+  searchValue: PropTypes.string, 
 }

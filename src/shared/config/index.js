@@ -21,7 +21,6 @@ export const CONFIG = {
   CHAT_BASE_URL: "https://steamcommunity.com/",
   STORE_BASE_URL: "https://store.steampowered.com/",
   STORE_CHECKOUT_BASE_URL: "https://checkout.steampowered.com/",
-  IMG_URL: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images",
   HERO_VIDEO_URL:
     "https://cdn.cloudflare.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders",
   ABILITY_VIDEO_URL:
@@ -55,9 +54,6 @@ export const CONFIG = {
   WEBSITE_ID: "DotaWeb",
   BASE_URL_SHARED_CDN: "https://shared.cloudflare.steamstatic.com/",
   CLAN_CDN_ASSET_URL: "https://clan.cloudflare.steamstatic.com/",
-  EUNIVERSE: 1,
-  WEB_UNIVERSE: "public",
-  LANGUAGE: "english",
   BASE_URL: "https://www.dota2.com/",
   IMG_URL:
     "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/",
@@ -68,7 +64,6 @@ export const CONFIG = {
   CDN_URL: "https://cdn.cloudflare.steamstatic.com/",
   COMMUNITY_URL: "https://steamcommunity.com/",
   STORE_URL: "https://store.steampowered.com/",
-  STORE_BASE_URL: "https://store.steampowered.com/",
   CLIENT_ID: "9B2C1229",
   PROJECT_NAME: "",
   PROJECT_ROOT: "",

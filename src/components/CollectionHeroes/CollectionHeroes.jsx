@@ -6,8 +6,7 @@ import { useFilterCollectionHeroes } from "./useFilterCollectionHeroes";
 import { useInputHeroes } from "./useInputHeroes";
 
 export default function CollectionHeroes() {
-
-  const { data: sortedData, isLoading, error, isError,} = useHeroesList();
+  const { data: sortedData, error, isError } = useHeroesList();
 
   const { value, setSearchHandler } = useInputHeroes();
 
@@ -23,7 +22,9 @@ export default function CollectionHeroes() {
   // }
 
   if (isError) {
-    return <div className={styles["no-heroes-list"]}>Error: {error.message}</div>;
+    return (
+      <div className={styles["no-heroes-list"]}>Error: {error.message}</div>
+    );
   }
 
   return (
@@ -31,10 +32,9 @@ export default function CollectionHeroes() {
       <div className={styles["heroes__wrapper-text"]}>
         <h1 className={styles["heroes__title"]}> CHOOSE YOUR HERO</h1>
         <p className={styles["heroes__description"]}>
-          {" "}
-          From magical tacticians to fierce brutes and cunning rogues, Dota 2's
-          hero pool is massive and limitlessly diverse. Unleash incredible
-          abilities and devastating ultimates on your way to victory.
+          From magical tacticians to fierce brutes and cunning rogues, Dota
+          2&apos;s hero pool is massive and limitlessly diverse. Unleash
+          incredible abilities and devastating ultimates on your way to victory.
         </p>
       </div>
 
@@ -45,7 +45,7 @@ export default function CollectionHeroes() {
         currentFilterComp={currentFilterComp}
       />
 
-      {(filterList.length === 0 && value) ? (
+      {filterList.length === 0 && value ? (
         <p className={styles["no-heroes-message"]}>
           NO HEROES MATCH YOUR FILTER
         </p>

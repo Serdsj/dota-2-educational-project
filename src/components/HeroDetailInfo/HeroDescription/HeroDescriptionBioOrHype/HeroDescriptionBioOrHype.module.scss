@@ -6,6 +6,11 @@
   position: relative;
   font-family: "Radiance", "Noto Sans", sans-serif;
 
+  .scroll-style-firefox {
+    scrollbar-width: thin; // Устанавливает тонкий скроллбар для Firefox
+    scrollbar-color: #5c5c5c #00000033; // Устанавливает цвет "бегунка" и фона скроллбара для Firefox
+  }
+
   .wrapper-bio-hero {
     position: absolute;
     width: 100%;
@@ -20,20 +25,21 @@
     transition-timing-function: ease-in-out;
     transition-duration: 0.2s;
     z-index: 4;
-    
-    &::-webkit-scrollbar { // это стиль самого скролл бара 
+
+    &::-webkit-scrollbar {
+      // это стиль самого скролл бара
       width: 12px;
       border-radius: 10px;
       background-color: #00000033;
-  }
+    }
 
-
-  &::-webkit-scrollbar-thumb { // это стиль для штуки которая передвигается 
-    border-radius: 10px;
-    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #5c5c5c;
-}
+    &::-webkit-scrollbar-thumb {
+      // это стиль для штуки которая передвигается
+      border-radius: 10px;
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #5c5c5c;
+    }
 
     .bio-hero-text {
       color: #ddd;
@@ -146,10 +152,7 @@
   }
 }
 
-
-
-@media (max-width:1300px) {
-
+@media (max-width: 1300px) {
   .hero-bio-or-hype {
     width: 100%;
     max-height: 100px;
@@ -159,19 +162,10 @@
     .wrapper-hype-hero {
       width: 95%;
     }
-  
-    .wrapper-bio-hero {
-      display: none;
-    }
 
-    .wrapper-attack-type {
-      display: none;
-    }
-  
-    .wrapper-complexity {
-      display: none;
-    }
-
+    .wrapper-bio-hero,
+    .wrapper-attack-type,
+    .wrapper-complexity,
     .style-button-toggle-text {
       display: none;
     }
@@ -179,4 +173,13 @@
 }
 
 
-
+@media (max-width: 700px) { 
+   .hero-bio-or-hype {
+     
+    .wrapper-hype-hero {
+      .hype-hero-text {
+        font-size: 20px;
+      }
+    }
+   }
+}

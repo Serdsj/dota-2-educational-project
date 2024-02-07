@@ -21,8 +21,9 @@
     }
 
     &:hover .description-ability {
-        opacity: 1;
-    }
+      opacity: 1;
+  }
+
 
     .description-ability {
       width: 300px;
@@ -30,6 +31,7 @@
       transform: translateY(-100%) translateY(-84px) translateX(-100px);
       opacity: 0;
       filter: drop-shadow(2px 2px 8px black);
+      pointer-events: none;
 
       .tootip-body {
         width: 300px;

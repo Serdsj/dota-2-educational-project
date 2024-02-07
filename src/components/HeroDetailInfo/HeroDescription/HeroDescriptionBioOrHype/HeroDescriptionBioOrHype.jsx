@@ -4,6 +4,7 @@ import parse from "html-react-parser";
 import melee from "../../../../img/melee.svg";
 import ranged from "../../../../img/ranged.svg";
 import { complexityHeroData } from "../heroDataDescription";
+import PropTypes from 'prop-types';
 
 export function HeroBioOrHype({
   bioHero = "",
@@ -22,10 +23,12 @@ export function HeroBioOrHype({
     setIsVisibleText(!isVisibleText)
   }
 
+  const isFirefox = navigator.userAgent.includes("Firefox");
+
   return (
     <div className={heroBioOrHypeStyle["hero-bio-or-hype"]}>   
       <div
-        className={`${heroBioOrHypeStyle["wrapper-bio-hero"]} ${isVisibleText ? heroBioOrHypeStyle["hidden-text-bio"] : ""} `}
+        className={`${heroBioOrHypeStyle["wrapper-bio-hero"]} ${isFirefox ? heroBioOrHypeStyle["scroll-style-firefox"] : ""} ${isVisibleText ? heroBioOrHypeStyle["hidden-text-bio"] : ""} `}
       >
         <p className={heroBioOrHypeStyle["bio-hero-text"]}>{parse(bioHero)}</p>
         <button
@@ -85,4 +88,11 @@ export function HeroBioOrHype({
       </div>
     </div>
   );
+}
+
+HeroBioOrHype.propTypes= {
+  bioHero: PropTypes.string,
+  hypeHero: PropTypes.string,
+  typeAttack: PropTypes.number,
+  complexity: PropTypes.number
 }

@@ -52,7 +52,6 @@ export default function HeroAttrsRolsStat() {
   const integeraManaReg = Math.floor(mana_regen * 10) / 10;
   const integerHealthReg = Math.ceil(health_regen * 10) / 10;
 
-
   const roleNames = [
     "Carry",
     "Support",

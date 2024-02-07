@@ -2,7 +2,7 @@ import styles from "./header.module.scss";
 import { NavLink } from "react-router-dom";
 import gitHub from "../../img/gitHub.svg"
 
-export default function Header(props) {
+export default function Header() {
   return (
     <>
       <header className={styles["header"]}>

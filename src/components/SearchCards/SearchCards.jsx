@@ -1,5 +1,6 @@
 import stylesSC from "./searchCards.module.scss";
 import { filterAttrButtons, filterCompButtons } from "./dataFilter";
+import PropTypes from 'prop-types';
 
 export default function SearchCards({
   bindValue,
@@ -57,4 +58,12 @@ export default function SearchCards({
       </div>
     </div>
   );
+}
+
+
+SearchCards.propTypes= {
+  bindValue: PropTypes.string,
+  handleClickFilter: PropTypes.func.isRequired,
+  currentFilterAttr: PropTypes.number,
+  currentFilterComp: PropTypes.number, 
 }

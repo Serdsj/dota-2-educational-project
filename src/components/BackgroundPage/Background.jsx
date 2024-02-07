@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 import styleBackground from "./Background.module.scss";
 
 export default function Background({ children, className }) {
@@ -8,3 +8,8 @@ export default function Background({ children, className }) {
         </div>
     );
 }
+
+Background.propTypes = {
+    children: PropTypes.node, // React элементы, строки, числа, фрагменты и т.д.
+    className: PropTypes.string // Строка
+};

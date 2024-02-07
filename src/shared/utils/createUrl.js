@@ -38,6 +38,7 @@ export class HeroUrlCreator {
     underlord: "abyssal_underlord",
     lifestealer: "life_stealer",
     "nature's_prophet": "furion",
+    sand_king: "sandking",
   };
 
   // Функция для форматирования строк
@@ -100,14 +101,18 @@ export class HeroUrlCreator {
     this.validateInputs(name, format);
     const formattedName = this.replaceHeroName(this.formatString(name));
     const formattedFormat = format.toLowerCase();
-    return `${formattedName}.${formattedFormat}`;
+    return `${
+      formattedName === "sandking" ? "sand_king" : formattedName
+    }.${formattedFormat}`;
   }
 
   changeHeroNamePortrait(name, format) {
     this.validateInputs(name, format);
     const formattedName = this.replaceHeroName(this.formatString(name));
     const formattedFormat = format.toLowerCase();
-    return `${formattedName}.${formattedFormat}`;
+    return `${
+      formattedName === "sandking" ? "sand_king" : formattedName
+    }.${formattedFormat}`;
   }
 
   changeHeroVideo(name, format) {
@@ -118,7 +123,9 @@ export class HeroUrlCreator {
       .split(".")
       .join("");
     const formattedFormat = format.toLowerCase();
-    return `${formattedName}.${formattedFormat}`;
+    return `${
+      formattedName === "sandking" ? "sand_king" : formattedName
+    }.${formattedFormat}`;
   }
 
   changeSkillImg(heroName, abilityName, format) {
@@ -142,21 +149,27 @@ export class HeroUrlCreator {
       .split(".")
       .join("");
     const formattedFormat = format.toLowerCase();
-    return `${formattedHeroName}/${formattedHeroName}_${formattedAbilityName}.${formattedFormat}`;
+    return `${
+      formattedHeroName === "sandking" ? "sand_king" : formattedHeroName
+    }/${formattedHeroName}_${formattedAbilityName}.${formattedFormat}`;
   }
 
   changeSkillShardVideo(heroName, format) {
     this.validateInputs(heroName, format);
-    const formattedHeroName = this.formatString(heroName);
+    const formattedHeroName = this.replaceHeroName(this.formatString(heroName));
     const formattedFormat = format.toLowerCase();
-    return `${formattedHeroName}/${formattedHeroName}_aghanims_shard.${formattedFormat}`;
+    return `${
+      formattedHeroName === "sandking" ? "sand_king" : formattedHeroName
+    }/${formattedHeroName}_aghanims_shard.${formattedFormat}`;
   }
 
   changeSkillAganimVideo(heroName, format) {
     this.validateInputs(heroName, format);
-    const formattedHeroName = this.formatString(heroName);
+    const formattedHeroName = this.replaceHeroName(this.formatString(heroName));
     const formattedFormat = format.toLowerCase();
-    return `${formattedHeroName}/${formattedHeroName}_aghanims_scepter.${formattedFormat}`;
+    return `${
+      formattedHeroName === "sandking" ? "sand_king" : formattedHeroName
+    }/${formattedHeroName}_aghanims_scepter.${formattedFormat}`;
   }
 
   // Помощник для проверки входных данных

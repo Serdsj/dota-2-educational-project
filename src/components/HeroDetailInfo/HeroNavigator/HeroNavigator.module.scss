@@ -60,3 +60,12 @@
     background-color: #fff;
   }
 }
+
+
+@media (max-width: 500px) { 
+
+  .wrapper-navigator {
+    top: 90px;
+    right: 23%;
+  }
+}

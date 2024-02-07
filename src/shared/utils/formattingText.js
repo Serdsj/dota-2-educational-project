@@ -14,7 +14,7 @@ export function formattingText(item) {
     );
   });
   // Удаление лишних символов процента
-  description = description.replace(/\%\%/g, "%");
+  description = description.replace(/%%/g, "%");
   return description;
 }
 
@@ -24,17 +24,19 @@ export function formattingTextShard(item) {
     const valueStr =
       specialValue.values_shard.length > 0
         ? formatFloat(specialValue.values_shard[0])
-        : "0";
+        : formatFloat(specialValue.values_float[0]);
     description = description.replace("%" + specialValue.name + "%", valueStr);
     description = description.replace(
       "%bonus_" + specialValue.name.toLowerCase() + "%",
       valueStr
     );
-    console.log(valueStr);
+    description = description.replace(
+      "%shard_" + specialValue.name.toLowerCase() + "%",
+      valueStr
+    );
   });
   // Удаление лишних символов процента
-  description = description.replace(/\%\%/g, "%");
-  console.log(description);
+  description = description.replace(/%%/g, "%");
   return description;
 }
 
@@ -42,17 +44,18 @@ export function formattingTextScepter(item) {
   let description = item.scepter_loc;
   item.special_values.forEach((specialValue) => {
     const valueStr =
-      specialValue.values_float.length > 0
-        ? formatFloat(specialValue.values_float[0])
-        : "0";
-    description = description.replace("%" + specialValue.name + "%", valueStr);
+      specialValue.values_scepter.length > 0
+        ? formatFloat(specialValue.values_scepter[0])
+        : formatFloat(specialValue.values_float[0]);
+
     description = description.replace(
-      "%" + specialValue.name.toLowerCase() + "%",
+      "%bonus_" + specialValue.name + "%",
       valueStr
     );
+    description = description.replace("%" + specialValue.name + "%", valueStr);
   });
+
   // Удаление лишних символов процента
-  description = description.replace(/\%\%/g, "%");
-  console.log(description);
+  description = description.replace(/%%/g, "%");
   return description;
 }

@@ -1,5 +1,5 @@
 import styleTypeAttack from "./HeroAbilityDetails_DamageType.module.scss";
-
+import PropTypes from 'prop-types';
 export function DamageType({ damageValue }) {
   let damageType;
   let textStyle = {};
@@ -34,4 +34,8 @@ export function DamageType({ damageValue }) {
       </div>
     )
   );
+}
+
+DamageType.propTypes= {
+  damageValue: PropTypes.number
 }

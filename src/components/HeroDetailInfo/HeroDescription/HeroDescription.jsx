@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { HeroDataContext } from "../../../pages/HeroPage/HeroPage";
 import { nameAttributesHero, attributesHero } from "./heroDataDescription";
 import { HeroBioOrHype } from "./HeroDescriptionBioOrHype/HeroDescriptionBioOrHype";
@@ -16,6 +16,24 @@ export default function HeroDescription() {
   const { data: currentHero } = currentHeroData;
   const { data: prevHero } = prevHeroData;
   const { data: nextHero } = nextHeroData;
+
+  const [isCurrentAnimation, setIsCurrentAnimation ] = useState(false)
+
+  useEffect (() => {
+    if (!currentHero || !currentHero[0]?.id) {
+      return
+    }
+  // Сбросить анимацию
+  setIsCurrentAnimation(false);
+
+  // Минимальная задержка для обеспечения перерисовки
+  const timeoutId = setTimeout(() => {
+    setIsCurrentAnimation(true);
+  }, 10); // 10 мс должно быть достаточно для большинства браузеров
+
+  // Очистить таймер при очистке эффекта
+  return () => clearTimeout(timeoutId);
+  }, [currentHero])
 
   if (
     !currentHero ||
@@ -51,11 +69,11 @@ export default function HeroDescription() {
   const currentNameAttrHero = nameAttributesHero[primary_attr] ?? null; // название атрибута
   return (
     <section className={heroDescpStyle["hero-description"]}>
-      <div className={heroDescpStyle["background-line"]}></div>
-      <div className={heroDescpStyle["wrapper-hero-video"]} >
+      <div className={`${isCurrentAnimation ? heroDescpStyle["background-animation"] : ""} ${heroDescpStyle["background-line"]}`}></div>
+      <div className={`${isCurrentAnimation ? heroDescpStyle["animation-move-right"] : ""}  ${heroDescpStyle["wrapper-hero-video"]}`} >
         <video
           className={heroDescpStyle["hero-video"]} 
-          key={currentName}
+          key={id}
           autoPlay={true} 
           preload="auto"
           loop
@@ -85,7 +103,7 @@ export default function HeroDescription() {
         </video>
       </div>
       <div className={heroDescpStyle["background-fade-bottom"]}></div>
-      <div className={`${heroDescpStyle["hero-vertical-bar"]}`}>
+      <div className={`${isCurrentAnimation ? heroDescpStyle["animation-slide-down"] : ""} ${heroDescpStyle["hero-vertical-bar"]}`}>
         <img
           src={currentAttributeHero}
           alt={`picture of ${currentNameAttrHero}`}
@@ -98,7 +116,7 @@ export default function HeroDescription() {
         <div className={heroDescpStyle["vertical-line-bar"]}></div>
       </div>
       <section
-        className={`${heroDescpStyle["animated-appear"]} ${heroDescpStyle["description"]}`}
+        className={`${isCurrentAnimation ? heroDescpStyle["animated-appear"] : ""} ${heroDescpStyle["description"]}`}
       >
         <div className={heroDescpStyle["attribute"]}>
           <img
@@ -121,7 +139,7 @@ export default function HeroDescription() {
       </section>
       <HeroNavigator prevName={prevName} nextName={nextName} />
 
-      <div className={heroDescpStyle["wrapper-top-skills-bar"]}>
+      <div className={` ${isCurrentAnimation ? heroDescpStyle["animated-appear"] : ""} ${heroDescpStyle["wrapper-top-skills-bar"]}`}>
         <h3 className={heroDescpStyle["title-abilities"]}>ABILITIES</h3>
         <div className={heroDescpStyle["wrapper-talents-abilities"]}>
           <TreeOfTalents heroTalents={talents} heroData={currentHero[0]} />

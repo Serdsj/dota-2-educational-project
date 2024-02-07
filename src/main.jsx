@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import "./style.scss";
