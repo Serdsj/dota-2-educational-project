@@ -1,6 +1,5 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import PropTypes from "prop-types";
-import LazyLoad from "react-lazy-load";
 import { AbilityContext } from "../HeroDetailnfo";
 import { HeroDataContext } from "../../../pages/HeroPage/HeroPage";
 import { DamageType } from "./HeroAbilityDetails_DamageType/HeroAbilityDetails_DamageType";
@@ -19,6 +18,7 @@ export default function HeroAbilityDetails({
   abilityData,
   activeAbilityId,
   isAnimating,
+  videoRefs,
   handleAbilityClick,
   allAbilities,
 }) {
@@ -51,31 +51,31 @@ export default function HeroAbilityDetails({
     abilityVideoUrlWebm,
   } = abilityData;
 
-  const handleAbilityClicks = (clickedAbility) => {
-    // Скрыть все видео и остановить воспроизведение
-    allAbilities.forEach((ability) => {
-      const videoElement = document.querySelector(`.video-${ability.id}`);
-      if (videoElement) {
-        videoElement.style.display = "none";
-        videoElement.pause();
-        videoElement.currentTime = 0; // Сбросить время, если необходимо
-      }
-    });
+  // const handleAbilityClicks = (clickedAbility) => {
+  //   // Скрыть все видео и остановить воспроизведение
+  //   allAbilities.forEach((ability) => {
+  //     const videoElement = document.querySelector(`.video-${ability.id}`);
+  //     if (videoElement) {
+  //       videoElement.style.display = "none";
+  //       videoElement.pause();
+  //       videoElement.currentTime = 0; // Сбросить время, если необходимо
+  //     }
+  //   });
 
-    // Найти и показать выбранное видео
-    const selectedVideoElement = document.querySelector(
-      `.video-${clickedAbility.id}`
-    );
-    if (selectedVideoElement) {
-      selectedVideoElement.style.display = "block"; // Или другой способ сделать видео видимым
-      const sources = selectedVideoElement.querySelectorAll("source");
-      sources.forEach((source) => {
-        source.src = source.dataset.src; // Установить источник из data-src
-      });
-      selectedVideoElement.load(); // Начать загрузку видео
-      selectedVideoElement.play(); // Автовоспроизведение, если требуется
-    }
-  };
+  //   // Найти и показать выбранное видео
+  //   const selectedVideoElement = document.querySelector(
+  //     `.video-${clickedAbility.id}`
+  //   );
+  //   if (selectedVideoElement) {
+  //     selectedVideoElement.style.display = "block"; // Или другой способ сделать видео видимым
+  //     const sources = selectedVideoElement.querySelectorAll("source");
+  //     sources.forEach((source) => {
+  //       source.src = source.dataset.src; // Установить источник из data-src
+  //     });
+  //     selectedVideoElement.load(); // Начать загрузку видео
+  //     selectedVideoElement.play(); // Автовоспроизведение, если требуется
+  //   }
+  // };
 
   return (
     <section className={styleAbilityDetail["ability-details"]}>
@@ -86,29 +86,22 @@ export default function HeroAbilityDetails({
           <div className={styleAbilityDetail["video-container"]}>
             <ul className={"video-list"}>
               {allAbilities.map((ability) => (
-                <li
-                  key={ability.id}
-                  className={"card"}
-                  style={{ display: "none" }}
-                >
+               <li key={ability.id} className="card" style={{ visibility: ability.id === activeAbilityId ? 'visible' : 'hidden' }}>
                   <video
                     className={`lazy ${styleAbilityDetail["ability-video"]}`}
                     key={ability.id}
+                    ref={el => videoRefs.current.set(ability.id, el)}
                     autoPlay
                     preload="auto"
                     loop
                     playsInline
                     muted
-                    data-poster={ability.abilityVideoUrlJpg}
+                    poster={ability.abilityVideoUrlJpg}
+                    data-src-webm={ability.abilityVideoUrlWebm} // Добавляем data-src-webm
+                    data-src-mp4={ability.abilityVideoUrlMp4}  // Добавляем data-src-mp4
                   >
-                    <source
-                      data-src={ability.abilityVideoUrlWebm}
-                      type="video/webm"
-                    />
-                    <source
-                      data-src={ability.abilityVideoUrlMp4}
-                      type="video/mp4"
-                    />
+                       <source type="video/webm" />
+                      <source type="video/mp4" />
                   </video>
                 </li>
               ))}

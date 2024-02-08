@@ -1,10 +1,10 @@
+import { memo } from "react"
 import styleTalents from "./HeroTreeOfTalents.module.scss";
 import tree from "../../../img/tree-talents.svg";
 import {parsingTalents} from "./parsingTalents";
 import PropTypes from 'prop-types';
 
-export default function TreeOfTalents({ heroData }) {
-
+ function TreeOfTalents({ heroData }) {
   return (
     <div className={styleTalents["wrapper-tree-of-talents"]}>
       <img
@@ -72,3 +72,6 @@ export default function TreeOfTalents({ heroData }) {
 TreeOfTalents.propTypes= {
   heroData: PropTypes.object,
 }
+
+
+export default memo (TreeOfTalents)

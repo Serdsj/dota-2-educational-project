@@ -1,11 +1,11 @@
-import { NavLink, useLocation, useParams } from "react-router-dom";
-import { useContext } from "react";
+import { NavLink, useLocation, useParams, } from "react-router-dom";
+import { useContext, memo } from "react";
 import { HeroDataContext } from "../../../pages/HeroPage/HeroPage";
 import { mediaLinks } from "../../../shared/utils/createUrl";
 import { attributesHero } from "./heroSwitchData"
 import styleHeroSwitch from "./HeroSwitch.module.scss";
 
-export default function HeroSwitch() {
+export default memo (function HeroSwitch() {
   const { prevHeroData, nextHeroData } = useContext(HeroDataContext);
   const { heroName } = useParams(); // это имя которое вытащили из адресса страницы
   const { pathname } = useLocation(); // это часть url /hero/axe
@@ -88,4 +88,5 @@ export default function HeroSwitch() {
       </NavLink>
     </div>
   );
-}
+}) 
+

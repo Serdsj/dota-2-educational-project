@@ -1,7 +1,7 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, memo } from "react";
 import { HeroDataContext } from "../../../pages/HeroPage/HeroPage";
 import { nameAttributesHero, attributesHero } from "./heroDataDescription";
-import { HeroBioOrHype } from "./HeroDescriptionBioOrHype/HeroDescriptionBioOrHype";
+import  HeroBioOrHype  from "./HeroDescriptionBioOrHype/HeroDescriptionBioOrHype";
 import { mediaLinks } from "../../../shared/utils/createUrl";
 import HeroNavigator from "../HeroNavigator/HeroNavigator";
 import heroDescpStyle from "./HeroDescription.module.scss";
@@ -9,7 +9,7 @@ import HeroAbilities from "../HeroAbilities/HeroAbilities";
 import TreeOfTalents from "../HeroTreeOfTalents/HeroTreeOfTalents";
 
 
-export default function HeroDescription() {
+ function HeroDescription() {
   const { currentHeroData, prevHeroData, nextHeroData } =
     useContext(HeroDataContext);
 
@@ -149,3 +149,5 @@ export default function HeroDescription() {
     </section>
   );
 }
+
+export default memo (HeroDescription)

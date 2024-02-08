@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import styleAttrRolStar from "./HeroAttrsRolsStat.module.scss";
 import { HeroDataContext } from "../../../pages/HeroPage/HeroPage";
 import { mediaLinks } from "../../../shared/utils/createUrl";
@@ -15,7 +15,7 @@ import movementSpeed from "../../../img/icon_movement_speed.png";
 import turnRate from "../../../img/icon_turn_rate.png";
 import vision from "../../../img/icon_vision.png";
 
-export default function HeroAttrsRolsStat() {
+ function HeroAttrsRolsStat() {
   const { currentHeroData } = useContext(HeroDataContext);
   const { data: currentHero } = currentHeroData;
 
@@ -291,3 +291,6 @@ export default function HeroAttrsRolsStat() {
     </div>
   );
 }
+
+
+export default memo(HeroAttrsRolsStat)

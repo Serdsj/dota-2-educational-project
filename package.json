@@ -17,7 +17,6 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-lazy-load": "^4.0.1",
     "react-router-dom": "^6.21.1"
   },
   "devDependencies": {
@@ -30,7 +29,12 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "http-proxy": "^1.18.1",
     "sass": "^1.69.5",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.8.0",
+    "stylelint-order": "^6.0.4",
     "vite": "^5.0.8",
+    "vite-plugin-stylelint": "^5.3.1",
     "vite-plugin-svgr": "^4.2.0"
   }
 }

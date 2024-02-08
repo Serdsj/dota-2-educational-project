@@ -1,13 +1,13 @@
 @font-face {
-  font-family: "Reaver";
-  src: local("Reaver"), url(./fonts/Reaver-SemiBold.woff) format("woff");
+  font-family: reaver; /* Изменено на строчные */
+  src: local(reaver), url("./fonts/Reaver-SemiBold.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Radiance";
-  src: local("Radiance"), url(./fonts/radiance.woff) format("woff");
+  font-family: radiance; /* Изменено на строчные */
+  src: local(radiance), url("./fonts/radiance.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -25,7 +25,7 @@ html {
 
 body {
   color: #fff;
-  font-family: "Reaver", serif;
+  font-family: Reaver, serif; /* Изменено */
   font-size: 18px;
   line-height: 1.5;
   font-weight: 400;
@@ -34,7 +34,7 @@ body {
 }
 
 ul {
-  padding-inline-start: 0px;
+  padding-inline-start: 0;
 }
 
 a {

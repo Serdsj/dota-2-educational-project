@@ -15,14 +15,14 @@ import styleDetailInfo from "./HeroDetailnfo.module.scss";
 
 export let AbilityContext = createContext(null);
 
-export default function HeroDetailInfo() {
+export default  function HeroDetailInfo() {
   const { currentHeroData } = useContext(HeroDataContext);
   const scollToRef = useRef();
   const allAbilities = useMemo(() => updateAbilityData(currentHeroData, basicUrl, shardUrl, scepterUrl), [currentHeroData.data]);
 
   console.log(allAbilities)
 
-  const { abilityData, activeAbilityId, isAnimating, handleAbilityClick } =
+  const { abilityData, activeAbilityId, isAnimating,  videoRefs, handleAbilityClick } =
     useCurrentAbilityData(allAbilities);
 
   if (currentHeroData.isError) {
@@ -46,6 +46,7 @@ export default function HeroDetailInfo() {
           abilityData={abilityData}
           activeAbilityId={activeAbilityId}
           isAnimating={isAnimating}
+          videoRefs= {videoRefs}
           handleAbilityClick={handleAbilityClick}
           allAbilities={allAbilities}
         />

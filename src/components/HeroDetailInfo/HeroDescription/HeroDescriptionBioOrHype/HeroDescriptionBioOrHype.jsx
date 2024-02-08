@@ -1,18 +1,17 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import heroBioOrHypeStyle from "./HeroDescriptionBioOrHype.module.scss";
 import parse from "html-react-parser";
 import melee from "../../../../img/melee.svg";
 import ranged from "../../../../img/ranged.svg";
 import { complexityHeroData } from "../heroDataDescription";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-export function HeroBioOrHype({
+function HeroBioOrHype({
   bioHero = "",
   hypeHero = "",
   typeAttack,
   complexity,
 }) {
-
   const [isVisibleText, setIsVisibleText] = useState(true);
 
   const updatedTextHype = hypeHero
@@ -20,15 +19,17 @@ export function HeroBioOrHype({
     .replace(/<\/b>/g, `</span>`);
 
   const toggleText = () => {
-    setIsVisibleText(!isVisibleText)
-  }
+    setIsVisibleText(!isVisibleText);
+  };
 
   const isFirefox = navigator.userAgent.includes("Firefox");
 
   return (
-    <div className={heroBioOrHypeStyle["hero-bio-or-hype"]}>   
+    <div className={heroBioOrHypeStyle["hero-bio-or-hype"]}>
       <div
-        className={`${heroBioOrHypeStyle["wrapper-bio-hero"]} ${isFirefox ? heroBioOrHypeStyle["scroll-style-firefox"] : ""} ${isVisibleText ? heroBioOrHypeStyle["hidden-text-bio"] : ""} `}
+        className={`${heroBioOrHypeStyle["wrapper-bio-hero"]} ${
+          isFirefox ? heroBioOrHypeStyle["scroll-style-firefox"] : ""
+        } ${isVisibleText ? heroBioOrHypeStyle["hidden-text-bio"] : ""} `}
       >
         <p className={heroBioOrHypeStyle["bio-hero-text"]}>{parse(bioHero)}</p>
         <button
@@ -39,7 +40,11 @@ export function HeroBioOrHype({
         </button>
       </div>
 
-      <div className={`${heroBioOrHypeStyle["wrapper-hype-hero"]} ${!isVisibleText ? heroBioOrHypeStyle["hidden-text-hype"] : "" }`}>
+      <div
+        className={`${heroBioOrHypeStyle["wrapper-hype-hero"]} ${
+          !isVisibleText ? heroBioOrHypeStyle["hidden-text-hype"] : ""
+        }`}
+      >
         <p className={heroBioOrHypeStyle["hype-hero-text"]}>
           {parse(updatedTextHype)}
         </p>
@@ -74,7 +79,8 @@ export function HeroBioOrHype({
           <div className={heroBioOrHypeStyle["wrapper-complexity-icons"]}>
             {complexityHeroData.map((heroComplexity) => {
               return (
-                <div key={heroComplexity.id}
+                <div
+                  key={heroComplexity.id}
                   className={`${heroBioOrHypeStyle["comp-icon"]} ${
                     complexity >= heroComplexity.id
                       ? heroBioOrHypeStyle["active-comp"]
@@ -90,9 +96,11 @@ export function HeroBioOrHype({
   );
 }
 
-HeroBioOrHype.propTypes= {
+HeroBioOrHype.propTypes = {
   bioHero: PropTypes.string,
   hypeHero: PropTypes.string,
   typeAttack: PropTypes.number,
-  complexity: PropTypes.number
-}
+  complexity: PropTypes.number,
+};
+
+export default memo(HeroBioOrHype);
