@@ -1,4 +1,4 @@
-import stylesSC from "./searchCards.module.scss";
+import stylesSC from "./SearchCards.module.scss";
 import { filterAttrButtons, filterCompButtons } from "./dataFilter";
 import PropTypes from 'prop-types';
 import { memo } from "react";

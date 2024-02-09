@@ -1,4 +1,4 @@
-import styles from "./collectionHeroes.module.scss";
+import styles from "./CollectionHeroes.module.scss";
 import SearchCards from "../SearchCards/SearchCards";
 import HeroesList from "../HeroeList/HeroesList";
 import { useHeroesList } from "../../query/useHeroesList";
