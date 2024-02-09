@@ -1,8 +1,9 @@
 import stylesSC from "./searchCards.module.scss";
 import { filterAttrButtons, filterCompButtons } from "./dataFilter";
 import PropTypes from 'prop-types';
+import { memo } from "react";
 
-export default function SearchCards({
+ function SearchCards({
   bindValue,
   handleClickFilter,
   currentFilterAttr,
@@ -62,8 +63,10 @@ export default function SearchCards({
 
 
 SearchCards.propTypes= {
-  bindValue: PropTypes.string,
+  bindValue: PropTypes.func.isRequired,
   handleClickFilter: PropTypes.func.isRequired,
   currentFilterAttr: PropTypes.number,
   currentFilterComp: PropTypes.number, 
 }
+
+export default memo (SearchCards)

@@ -1,7 +1,8 @@
+@import "../../../../layouts/scssLayout/variablesScss/variablesScss.scss";
+
 .type-attack {
     font-size: 14px;
-    color: #737373;
-    // text-transform: uppercase;
+    color: $new-abil-color;
     letter-spacing: 1px;
     display: flex;
     flex-direction: row;
@@ -10,9 +11,9 @@
 
     .type-attack-value {
       margin-left: 4px;
-      color: #fff;
+      color: $text-color-white;
       font-weight: 600;
-      letter-spacing: 0px;
+      letter-spacing: 0;
       text-transform: none;
     }
    }

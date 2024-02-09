@@ -1,9 +1,10 @@
+@import "../variablesScss/variablesScss.scss";
 %style_filter_names {
-    color: #808fa6;
+    color: $color-filter-block;
     font-size: 1.0625rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-family: "Radiance","Noto Sans",sans-serif;
+    font-family: radiance,"Noto Sans",sans-serif;
 }
 
 %wrapper_filters_styles {
@@ -21,7 +22,7 @@
     transition-timing-function: ease-in-out;
     transition-duration: 0.1s;
     cursor: pointer;
-    color: #fff;
+    color: $text-color-white;
     filter: brightness(0.5) saturate(0);
     background-color: transparent;
     border: none;

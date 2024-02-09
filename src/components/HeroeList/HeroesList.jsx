@@ -1,9 +1,10 @@
+import { memo } from "react";
 import HeroeItem from "../HeroeItem/HeroeItem";
 import stylesHList from "./HeroesList.module.scss";
 import { mediaLinks } from "../../shared/utils/createUrl";
 import PropTypes from 'prop-types';
 
-export default function HeroesList({ heroesData, currentFilterAttr, currentFilterComp, searchValue }) {
+ function HeroesList({ heroesData, currentFilterAttr, currentFilterComp, searchValue }) {
 
   const hasVisible = (currentData) => {
     // Если установлен фильтр по атрибутам и герой не соответствует этому фильтру
@@ -48,3 +49,5 @@ HeroesList.propTypes= {
   currentFilterComp: PropTypes.number,
   searchValue: PropTypes.string, 
 }
+
+export default memo(HeroesList)

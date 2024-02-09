@@ -1,7 +1,9 @@
+@import "../../../layouts/scssLayout/variablesScss/variablesScss.scss";
+
 .wrapper-tree-of-talents {
   width: 80px;
   height: 80px;
-  margin: 0px 6px;
+  margin: 0 6px;
   overflow: visible;
   position: relative;
   transition-property: transform;
@@ -20,20 +22,20 @@
     transform: translateY(-100%) translateY(-84px) translateX(-210px);
     width: 300px;
     position: absolute;
-    filter: drop-shadow(2px 2px 8px black);
+    filter: drop-shadow(2px 2px 8px $black);
     display: none;
 
     .tooltip-body {
       width: 500px;
-      background-color: #000;
+      background-color:  $black;
       clip-path: polygon(
-        0px 0px,
-        0px calc(100% - 20px),
+        0 0,
+        0 calc(100% - 20px),
         calc(50% - 20px) calc(100% - 20px),
         50% 100%,
         calc(50% + 20px) calc(100% - 20px),
         100% calc(100% - 20px),
-        100% 0px
+        100% 0
       ); // это создание острого угла внизу блок
       min-height: 0;
       display: flex;
@@ -44,14 +46,14 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-        background: linear-gradient(150deg, #68727c, #14171a);
+        background: linear-gradient(150deg, $linear-gradient-begining, $linear-gradient-end);
         padding: 20px;
         padding-bottom: 40px;
 
         .title-tree {
-          font-family: Reaver, serif;
+          font-family: reaver, serif;
           font-size: 20px;
-          text-shadow: 0px 0px 5px #000;
+          text-shadow: 0 0 5px  $black;
           font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 2px;
@@ -67,14 +69,14 @@
           justify-content: center;
           align-items: center;
           gap: 10px;
-          padding: 0px 18px;
-          background: linear-gradient(150deg, #3c4247, #0a0c0e);
+          padding: 0 18px;
+          background: linear-gradient(150deg, $state-gray, $midnight);
         }
 
         .description-talent {
           flex-grow: 1;
           flex-basis: 1px;
-          font-family: "Radiance", sans-serif;
+          font-family: radiance, sans-serif;
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -82,13 +84,13 @@
           text-align: center;
           font-weight: 400;
           font-size: 13px;
-          color: #ffffffbb;
+          color: $talents-desc-color;
         }
 
         .wrapper-level-talent {
           border-radius: 50%;
           padding: 5px;
-          background: linear-gradient(325deg, #3c4247, #0a0c0e);
+          background: linear-gradient(325deg, $state-gray, $midnight);
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -98,13 +100,13 @@
             min-width: 50px;
             min-height: 50px;
             border-radius: 50%;
-            background: #222;
+            background: $bc-level-talent;
             font-size: 20px;
-            font-family: Reaver, serif;
+            font-family: reaver, serif;
             font-weight: bold;
             letter-spacing: 2px;
-            color: #e7d292;
-            text-shadow: 0px 0px 8px #ff531c;
+            color: $gold-color;
+            text-shadow: 0 0 8px $sunset-orange;
             display: flex;
             flex-direction: column;
             justify-content: center;

@@ -1,4 +1,6 @@
-@keyframes slideUp {
+@import "../../../layouts/scssLayout/variablesScss/variablesScss.scss";
+
+@keyframes slide-up {
   from {
     transform: translateY(100px); // Начало смещения снизу
     opacity: 0; // Начальная прозрачность
@@ -10,16 +12,16 @@
 }
 
 .animated-appear {
-  animation: slideUp 1.5s ease-out forwards; // Применение анимации
+  animation: slide-up 1.5s ease-out forwards; // Применение анимации
 }
 
-@keyframes slideDown {
+@keyframes slide-down {
   from {
     transform: translateY(-90px) rotate(270deg);
     opacity: 0;
   }
   to {
-    transform: translateY(0px) rotate(270deg);
+    transform: translateY(0) rotate(270deg);
     opacity: 1;
   }
 }
@@ -29,16 +31,16 @@
   animation-timing-function: ease-out;
   animation-delay: 0s;
   animation-iteration-count: 1;
-  animation-name: slideDown;
+  animation-name: slide-down;
 }
 
-@keyframes slideMoveRight {
+@keyframes slide-move-right {
   from {
     transform: translateX(-100px);
     opacity: 0;
   }
   to {
-    transform: translateX(0px);
+    transform: translateX(0);
     opacity: 1;
   }
 }
@@ -48,10 +50,10 @@
   animation-timing-function: ease-out;
   animation-delay: 0s;
   animation-iteration-count: 1;
-  animation-name: slideMoveRight;
+  animation-name: slide-move-right;
 }
 
-@keyframes opacityBackground {
+@keyframes opacity-background {
   from {
     opacity: 0;
   }
@@ -65,13 +67,13 @@
   animation-timing-function: ease-out;
   animation-delay: 0s;
   animation-iteration-count: 1;
-  animation-name: opacityBackground;
+  animation-name: opacity-background;
 }
 
 .background-line {
   width: 150%;
   height: 650px;
-  background-color: #00000060;
+  background-color: $bc-line-black;
   position: absolute;
   transform: skewY(-45deg) translateX(-50vw);
   overflow: hidden;
@@ -89,7 +91,7 @@
   z-index: 20;
 
   .title-abilities {
-    color: #fff;
+    color: $text-color-white;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -130,15 +132,14 @@
 .background-fade-bottom {
   position: absolute;
   background: linear-gradient(
-    rgba(0, 0, 0, 0) 70%,
-    rgba(0, 0, 0, 0.733) 100%,
-    rgb(0, 0, 0) 100%
+    rgb(0 0 0 / 0%) 70%,
+     rgb(0 0 0 / 73.3%) 100%
   );
   width: 100%;
   height: 100%;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
+  left: 0;
+  bottom: 0;
+  right: 0;
   pointer-events: none;
 }
 
@@ -148,8 +149,8 @@
   width: 100%;
   height: 85vh;
   min-height: 700px;
-  padding: 0px 0px 0px 120px;
-  font-family: "Radiance", "Noto Sans", sans-serif;
+  padding: 0 0 0 120px;
+  font-family: radiance, "Noto Sans", sans-serif;
 
   .hero-vertical-bar {
     width: 900px;
@@ -175,11 +176,11 @@
       font-size: 17px;
       font-weight: 600;
       margin-left: 12px;
-      font-family: "Reaver", serif;
+      font-family: reaver, serif;
     }
 
     .hero-id {
-      color: #888;
+      color: $hero-id-gray;
       text-transform: uppercase;
       letter-spacing: 3px;
       margin-left: 10px;
@@ -189,8 +190,8 @@
     .vertical-line-bar {
       flex-grow: 1;
       height: 2px;
-      background-color: #555;
-      margin: 0px 8px 3px 8px;
+      background-color: $medium-gray;
+      margin: 0 8px 3px;
     }
   }
 
@@ -212,7 +213,7 @@
     align-items: center;
 
     .attr {
-      color: #fff;
+      color: $text-color-white;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-weight: 100;
@@ -221,21 +222,21 @@
   }
 
   .name-of-hero {
-    font-family: "Reaver", serif;
+    font-family: reaver, serif;
     line-height: 110%;
     font-size: 80px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-top: 12px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 
   .short-description {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #a5e0f3;
+    color: $sky-blue;
     margin-top: 5px;
     margin-bottom: 5px;
   }
@@ -243,11 +244,11 @@
 
 @media (max-width: 1100px) {
   .hero-description {
-    padding: 0px 10px 0px 10px;
+    padding: 0 10px;
 
     .description {
       width: 90%;
-      margin-top: 0px;
+      margin-top: 0;
       position: absolute;
       bottom: 110px;
       height: calc(38% - 100px);
@@ -255,16 +256,16 @@
     .name-of-hero {
       font-size: 3.75rem;
     }
-    
+
     .wrapper-hero-video {
       width: 60%;
-    height: 60%;
-    right: 19%;
-    top: 5%;
+      height: 60%;
+      right: 19%;
+      top: 5%;
     }
 
     .wrapper-top-skills-bar,
-    .hero-vertical-bar{
+    .hero-vertical-bar {
       display: none;
     }
   }
@@ -274,7 +275,7 @@
   .hero-description {
     .name-of-hero {
       font-size: 25px;
-      margin-top: 0px;
+      margin-top: 0;
     }
 
     .short-description {
@@ -283,13 +284,10 @@
   }
 }
 
-
 @media (max-width: 550px) {
-   
-  .hero-description { 
-    .description { 
-      bottom: 225px 
+  .hero-description {
+    .description {
+      bottom: 225px;
     }
   }
-
 }

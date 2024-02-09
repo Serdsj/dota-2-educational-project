@@ -1,3 +1,5 @@
+@import "../../layouts/scssLayout/variablesScss/variablesScss.scss";
+
 .heroes {
   max-width: 1200px;
   width: 100%;
@@ -11,7 +13,7 @@
   }
 
   &__title {
-    color: #fff;
+    color: $text-color-white;
     font-size: 3vw;
     font-weight: bold;
     text-align: center;
@@ -23,11 +25,11 @@
   }
 
   &__description {
-    font-family: "Radiance","Noto Sans",sans-serif;
+    font-family: radiance, "Noto Sans", sans-serif;
     width: 100%;
     max-width: 1000px;
-    margin: 0px auto;
-    color: #ddd;
+    margin: 0 auto;
+    color: $gray-light;
     font-size: 26px;
     text-align: center;
     font-weight: 100;
@@ -37,22 +39,22 @@
 }
 
 .no-heroes-message {
-  font-family: "Radiance",serif;
-    font-size: 75px;
-    color: #fff;
-    text-align: center;
-    margin-top: 12vw;
+  font-family: radiance, serif;
+  font-size: 75px;
+  color: $text-color-white;
+  text-align: center;
+  margin-top: 12vw;
 }
 
 .no-heroes-list {
-  font-family: "Radiance",serif;
+  font-family: radiance, serif;
   font-size: 75px;
-  color: #fff;
+  color: $text-color-white;
   text-align: center;
   margin-top: 26vw;
 }
 
-@keyframes slideUp {
+@keyframes slide-up {
   from {
     transform: translateY(100px); // Начало смещения снизу
     opacity: 0; // Начальная прозрачность
@@ -64,12 +66,11 @@
 }
 
 .animated-appear {
-  animation: slideUp 2s ease-out forwards; // Применение анимации
+  animation: slide-up 2s ease-out forwards; // Применение анимации
 }
 
+@media (max-width: 1000px) {
 
-@media (max-width:1000px) {
-   
   .heroes__title {
     font-size: 40px;
   }
@@ -78,21 +79,22 @@
     font-size: 26px;
   }
 
-  .no-heroes-message, .no-heroes-list {
+  .no-heroes-message,
+  .no-heroes-list {
     font-size: 50px;
   }
 }
 
-@media (max-width:800px) {
-  
-  .no-heroes-message, .no-heroes-list {
+@media (max-width: 800px) {
+
+  .no-heroes-message,
+  .no-heroes-list {
     font-size: 35px;
   }
 }
 
-
-@media (max-width:500px) {
-   
+@media (max-width: 500px) {
+  
   .heroes__title {
     font-size: 26px;
   }

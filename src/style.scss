@@ -1,3 +1,5 @@
+@import "/src//layouts/scssLayout/variablesScss/variablesScss.scss";
+
 @font-face {
   font-family: reaver; /* Изменено на строчные */
   src: local(reaver), url("./fonts/Reaver-SemiBold.woff") format("woff");
@@ -24,8 +26,8 @@ html {
 }
 
 body {
-  color: #fff;
-  font-family: Reaver, serif; /* Изменено */
+  color: $text-color-white;
+  font-family: reaver, serif; /* Изменено */
   font-size: 18px;
   line-height: 1.5;
   font-weight: 400;

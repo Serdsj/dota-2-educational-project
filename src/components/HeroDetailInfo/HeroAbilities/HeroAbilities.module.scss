@@ -1,11 +1,13 @@
+@import "../../../layouts/scssLayout/variablesScss/variablesScss.scss";
+
 .hero-abilities-list {
   display: flex;
-  margin: 0px;
+  margin: 0;
 
   .hero-abilities-item {
     width: 80px;
     height: 80px;
-    margin: 0px 6px;
+    margin: 0 6px;
     position: relative;
     transition-property: transform;
     transition-timing-function: ease-in-out;
@@ -14,9 +16,9 @@
     .hero-ability-icon {
       width: 80px;
       height: 80px;
-      margin: 0px 6px;
+      margin: 0 6px;
       cursor: pointer;
-      box-shadow: 0px 0px 20px #000, 0px 0px 20px #000;
+      box-shadow: 0 0 20px $black, 0 0 20px $black;
       position: relative;
     }
 
@@ -30,24 +32,24 @@
       position: absolute;
       transform: translateY(-100%) translateY(-84px) translateX(-100px);
       opacity: 0;
-      filter: drop-shadow(2px 2px 8px black);
+      filter: drop-shadow(2px 2px 8px $black);
       pointer-events: none;
 
       .tootip-body {
         width: 300px;
-        background-color: #000;
+        background-color: $black;
         min-height: 0;
         display: flex;
         flex-direction: column;
         text-align: left;
         clip-path: polygon(
-          0px 0px,
-          0px calc(100% - 20px),
+          0 0,
+          0 calc(100% - 20px),
           calc(50% - 20px) calc(100% - 20px),
           50% 100%,
           calc(50% + 20px) calc(100% - 20px),
           100% calc(100% - 20px),
-          100% 0px
+          100% 0
         );
 
         .wrapper-ability-video {
@@ -62,14 +64,14 @@
 
         .wrapper-description-text {
           width: 300px;
-          background: linear-gradient(150deg, #68727c, #14171a);
+          background: linear-gradient(150deg, $linear-gradient-begining, $linear-gradient-end);
           padding: 10px 15px;
           padding-bottom: 35px;
-          font-family: "Radiance", "Noto Sans", sans-serif;
+          font-family: radiance, "Noto Sans", sans-serif;
 
           .name-of-ability {
-            color: #fff;
-            font-family: Reaver, serif;
+            color: $text-color-white;
+            font-family: reaver, serif;
             font-size: 20px;
             font-weight: bold;
             text-transform: uppercase;
@@ -79,11 +81,11 @@
           }
 
           .description-text {
-            color: #ddd;
+            color: $gray-light;
             margin-top: 3px;
             margin-bottom: 10px;
             font-size: 17px;
-            letter-spacing: 0px;
+            letter-spacing: 0;
           }
         }
       }

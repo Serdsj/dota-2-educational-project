@@ -1,8 +1,10 @@
 
+@import "../../layouts/scssLayout/variablesScss/variablesScss.scss";
+
 .info-message {
-    font-family: "Radiance",serif;
+    font-family: radiance,serif;
     font-size: 75px;
-    color: #fff;
+    color: $text-color-white;
     text-align: center;
     margin-top: 17vw;
 }
@@ -11,7 +13,7 @@
 .wrapper-flex {
     min-height: 100%;
     width: 100%;
-    color: #fff;
+    color: $text-color-white;
     display: flex;
     flex-direction: column;
     overflow: hidden;

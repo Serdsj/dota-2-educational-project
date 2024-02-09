@@ -1,11 +1,13 @@
+@import "../../../layouts/scssLayout/variablesScss/variablesScss.scss";
+
 @keyframes smooth-transition {
   from {
-    background-color: #000;
+    background-color: $black;
     opacity: 1;
   }
 
   to {
-    background-color: #000;
+    background-color: $black;
     opacity: 0;
   }
 }
@@ -24,7 +26,7 @@ h2 {
 .ability-details {
   width: 100%;
   min-height: 400px;
-  padding: 80px 0px;
+  padding: 80px 0;
   margin-top: -10px;
   display: flex;
   flex-direction: column;
@@ -35,9 +37,9 @@ h2 {
   .title-block {
     width: 100%;
     text-align: center;
-    font-family: "Reaver", serif;
+    font-family: reaver, serif;
     font-size: 20px;
-    color: #fff;
+    color: $text-color-white;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -63,9 +65,9 @@ h2 {
       .video-container {
         width: 100%;
         padding-top: 56.25%;
-        height: 0px;
+        height: 0;
         position: relative;
-        box-shadow: 3px 3px 8px #000;
+        box-shadow: 3px 3px 8px $black;
 
         .fade-out {
           width: 100%;
@@ -100,7 +102,7 @@ h2 {
       .switch-video {
         width: 80px;
         height: 80px;
-        margin: 0px 4px;
+        margin: 0 4px;
         margin-bottom: 8px;
         cursor: pointer;
         background-size: cover;
@@ -108,7 +110,7 @@ h2 {
         transition-property: transform;
         transition-timing-function: ease-in-out;
         transition-duration: 0.1s;
-        box-shadow: 0px 0px 10px #000;
+        box-shadow: 0 0 10px $black;
         position: relative;
 
         &:hover {
@@ -132,7 +134,7 @@ h2 {
       .abil-icon-text-description {
         width: 100%;
         padding: 8px;
-        background-color: #121212;
+        background-color: $almost-black;
         display: flex;
         flex-direction: row;
       }
@@ -141,19 +143,19 @@ h2 {
         width: 96px;
         height: 96px;
         margin: 10px 15px 10px 10px;
-        box-shadow: 0px 0px 8px #000;
+        box-shadow: 0 0 8px $black;
       }
 
       .text-new-abil {
-        background-color: #1c2e50;
-        color: #ddd;
+        background-color: $new-abil-text-color;
+        color: $gray-light;
         display: inline-flex;
         text-transform: uppercase;
         letter-spacing: 1px;
         padding: 3px 8px;
-        margin: 3px 0px;
+        margin: 3px 0;
         border-radius: 4px;
-        font-family: "Radiance", "Noto Sans", sans-serif;
+        font-family: radiance, "Noto Sans", sans-serif;
       }
 
       .wrapper-text-description {
@@ -168,38 +170,37 @@ h2 {
       }
 
       .name-of-ability {
-        color: #fff;
-        font-family: "Reaver", serif;
+        color: $text-color-white;
+        font-family: reaver, serif;
         font-size: 22px;
         font-weight: bold;
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin: 0px;
+        margin: 0;
       }
 
       .text-description-abil {
-        color: #ddd;
+        color: $gray-light;
         font-size: 18px;
         white-space: pre-wrap;
-        margin-bottom: 10px;
-        font-family: "Radiance", "Noto Sans", sans-serif;
-        margin: 0px;
+        font-family: radiance, "Noto Sans", sans-serif;
+        margin: 0 0 10px 0;
         line-height: 22px;
       }
 
       .wrapper-details-ability {
         width: 100%;
-        background-color: #000;
+        background-color: $black;
         min-height: 0;
         display: flex;
         flex-direction: column;
-        padding: 20px 30px 15px 30px;
+        padding: 20px 30px 15px;
 
         .generic-value {
           width: 100%;
           display: flex;
           flex-direction: row;
-          font-family: "Radiance", "Noto Sans", sans-serif;
+          font-family: radiance, "Noto Sans", sans-serif;
         }
 
         .column {
@@ -222,18 +223,18 @@ h2 {
         .wrapper-specific-values-item {
           height: 24px;
           font-size: 14px;
-          color: #737373;
+          color: $new-abil-color;
           text-transform: uppercase;
           letter-spacing: 1px;
           display: flex;
           flex-direction: row;
           width: 100%;
-          font-family: "Radiance", "Noto Sans", sans-serif;
+          font-family: radiance, "Noto Sans", sans-serif;
         }
 
         .specific-value-item {
           margin-left: 4px;
-          color: #fff;
+          color: $text-color-white;
           font-weight: 600;
           letter-spacing: 1px;
           text-transform: none;
@@ -246,7 +247,7 @@ h2 {
           flex-direction: row;
           flex-wrap: wrap;
           justify-content: space-between;
-          font-family: "Radiance", "Noto Sans", sans-serif;
+          font-family: radiance, "Noto Sans", sans-serif;
         }
 
         .wrapper-values {
@@ -262,26 +263,26 @@ h2 {
         }
 
         .quentity-of-values {
-          font-family: "Radiance", "Noto Sans", sans-serif;
+          font-family: radiance, "Noto Sans", sans-serif;
         }
 
         .blue-box {
           width: 16px;
           height: 16px;
           border-radius: 3px;
-          background: linear-gradient(#00a4db, #007196);
+          background: linear-gradient($bc-blue-begining, $bc-blue-end);
         }
 
         .lore-loc {
           width: 100%;
-          background-color: #111;
+          background-color: $bc-almost-black;
           margin-top: 20px;
           margin-bottom: 10px;
           padding: 10px;
           font-style: italic;
           font-size: 14px;
-          color: #aaa;
-          font-family: "Radiance", "Noto Sans", sans-serif;
+          color: $silver;
+          font-family: radiance, "Noto Sans", sans-serif;
         }
       }
     }
@@ -298,14 +299,14 @@ h2 {
 
 @media (max-width: 900px) {
   .ability-details {
-    padding: 30px 0px;
+    padding: 30px 0;
     .wrapper-video-ability-description {
       flex-direction: column;
       align-items: center;
 
       .ability-left {
         width: 100%;
-        margin-right: 0px;
+        margin-right: 0;
       }
 
       .ability-right {
