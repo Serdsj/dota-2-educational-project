@@ -43,6 +43,8 @@ export function useAbilitiesDataAndEvent(heroData) {
 
   const handleMouseEnter = (abilityId) => {
     const video = videoRefs.current.get(abilityId);
+    if (!video) return;
+
     if (video) {
       // Проверяем, было ли видео уже загружено
       if (video.dataset.loaded !== "true") {

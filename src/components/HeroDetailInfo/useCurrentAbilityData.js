@@ -63,6 +63,8 @@ export function useCurrentAbilityData(heroAbilities) {
     setAbilityData(ability);
     setActiveAbilityId(ability.id);
     setIsAnimating(true);
+
+    console.log("это handleAbilityClick сработало");
   };
 
   return {

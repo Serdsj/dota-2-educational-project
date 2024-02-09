@@ -46,36 +46,7 @@ export default function HeroAbilityDetails({
     ability_has_scepter,
     ability_has_shard,
     desc_loc,
-    abilityVideoUrlJpg,
-    abilityVideoUrlMp4,
-    abilityVideoUrlWebm,
   } = abilityData;
-
-  // const handleAbilityClicks = (clickedAbility) => {
-  //   // Скрыть все видео и остановить воспроизведение
-  //   allAbilities.forEach((ability) => {
-  //     const videoElement = document.querySelector(`.video-${ability.id}`);
-  //     if (videoElement) {
-  //       videoElement.style.display = "none";
-  //       videoElement.pause();
-  //       videoElement.currentTime = 0; // Сбросить время, если необходимо
-  //     }
-  //   });
-
-  //   // Найти и показать выбранное видео
-  //   const selectedVideoElement = document.querySelector(
-  //     `.video-${clickedAbility.id}`
-  //   );
-  //   if (selectedVideoElement) {
-  //     selectedVideoElement.style.display = "block"; // Или другой способ сделать видео видимым
-  //     const sources = selectedVideoElement.querySelectorAll("source");
-  //     sources.forEach((source) => {
-  //       source.src = source.dataset.src; // Установить источник из data-src
-  //     });
-  //     selectedVideoElement.load(); // Начать загрузку видео
-  //     selectedVideoElement.play(); // Автовоспроизведение, если требуется
-  //   }
-  // };
 
   return (
     <section className={styleAbilityDetail["ability-details"]}>

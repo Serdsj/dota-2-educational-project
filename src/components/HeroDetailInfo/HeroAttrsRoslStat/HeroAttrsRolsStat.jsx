@@ -292,5 +292,4 @@ import vision from "../../../img/icon_vision.png";
   );
 }
 
-
 export default memo(HeroAttrsRolsStat)

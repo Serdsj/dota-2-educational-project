@@ -20,8 +20,6 @@ export default  function HeroDetailInfo() {
   const scollToRef = useRef();
   const allAbilities = useMemo(() => updateAbilityData(currentHeroData, basicUrl, shardUrl, scepterUrl), [currentHeroData.data]);
 
-  console.log(allAbilities)
-
   const { abilityData, activeAbilityId, isAnimating,  videoRefs, handleAbilityClick } =
     useCurrentAbilityData(allAbilities);
 
