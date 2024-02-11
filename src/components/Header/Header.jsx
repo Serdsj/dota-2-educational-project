@@ -1,6 +1,7 @@
 import styles from "./Header.module.scss";
 import { NavLink } from "react-router-dom";
-import gitHub from "../../img/gitHub.svg"
+import gitHub from "../../img/gitHub.svg";
+import dotaLogo from "../../img/dota2_logo_horiz.png"
 
 export default function Header() {
   return (
@@ -11,7 +12,7 @@ export default function Header() {
             <NavLink to="/">
               <img
                 className={styles["game-logo"]}
-                src="../src/img/dota2_logo_horiz.png"
+                src={dotaLogo}
                 alt="Logo of dota 2"
               />
             </NavLink>
@@ -34,7 +35,7 @@ export default function Header() {
           </li>
         </ul>
       </header>
-      
+
     </>
   );
 }
