@@ -17,7 +17,7 @@ export function useGetHeroesData(heroesId = [], fetchFunc) {
       },
       staleTime: Infinity,
       enabled: heroId !== null,
-      refetchOnWindowFocus: false, // отключаем перезапуска запроса при переключении между вкладками
+      refetchOnWindowFocus: false,
     })),
   });
 

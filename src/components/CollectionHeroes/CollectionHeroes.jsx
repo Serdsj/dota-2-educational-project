@@ -1,6 +1,6 @@
 import styles from "./CollectionHeroes.module.scss";
-import SearchCards from "../SearchCards/SearchCards";
-import HeroesList from "../HeroeList/HeroesList";
+import SearchCardsMemo from "../SearchCards/SearchCards";
+import HeroesListMemo from "../HeroeList/HeroesList";
 import { useHeroesList } from "../../query/useHeroesList";
 import { useFilterCollectionHeroes } from "./useFilterCollectionHeroes";
 import { useInputHeroes } from "./useInputHeroes";
@@ -34,7 +34,7 @@ export default function CollectionHeroes() {
         </p>
       </div>
 
-      <SearchCards
+      <SearchCardsMemo
         bindValue={setSearchHandler}
         handleClickFilter={handleFilterClick}
         currentFilterAttr={currentFilterAttr}
@@ -47,7 +47,7 @@ export default function CollectionHeroes() {
         </p>
       ) : (
         <div className={styles["animated-appear"]}>
-          <HeroesList
+          <HeroesListMemo
             heroesData={filterList}
             currentFilterAttr={currentFilterAttr}
             currentFilterComp={currentFilterComp}

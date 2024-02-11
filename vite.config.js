@@ -1,17 +1,13 @@
 import { defineConfig } from "vite";
+import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import react from "@vitejs/plugin-react";
-import svgr from "vite-plugin-svgr";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    svgr({
-      svgrOptions: {
-        plugins: ["@svgr/plugin-jsx"],
-        // svgoConfig: {
-        //   floatPrecision: 2,
-        // },
+    ViteImageOptimizer({
+      png: {
+        quality: 90,
       },
     }),
   ],

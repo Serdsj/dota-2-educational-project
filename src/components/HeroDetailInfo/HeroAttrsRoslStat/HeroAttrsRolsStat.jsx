@@ -15,7 +15,7 @@ import movementSpeed from "../../../img/icon_movement_speed.png";
 import turnRate from "../../../img/icon_turn_rate.png";
 import vision from "../../../img/icon_vision.png";
 
- function HeroAttrsRolsStat() {
+function HeroAttrsRolsStat() {
   const { currentHeroData } = useContext(HeroDataContext);
   const { data: currentHero } = currentHeroData;
 
@@ -41,12 +41,13 @@ import vision from "../../../img/icon_vision.png";
     attack_rate,
     attack_range,
     abilities,
-    armor, 
+    armor,
     magic_resistance,
     movement_speed,
     turn_rate,
     sight_range_day,
     sight_range_night,
+    id,
   } = currentHero[0];
 
   const integeraManaReg = Math.floor(mana_regen * 10) / 10;
@@ -75,7 +76,7 @@ import vision from "../../../img/icon_vision.png";
                   type: "heroImg",
                   heroName: name_loc,
                 })}
-                key={name_loc}
+                key={id}
                 alt={`picture of ${name_loc}`}
                 className={styleAttrRolStar["hero-small-icon"]}
               />
@@ -160,7 +161,7 @@ import vision from "../../../img/icon_vision.png";
                   <div className={styleAttrRolStar["background"]}></div>
                   <div
                     className={styleAttrRolStar["filled"]}
-                    style={{ width: `${role_levels[index] * 33.3}%` }} // Пример расчета ширины на основе значения role_levels
+                    style={{ width: `${role_levels[index] * 33.3}%` }}
                   ></div>
                 </div>
               </li>
@@ -208,7 +209,13 @@ import vision from "../../../img/icon_vision.png";
                   className={styleAttrRolStar["value-of-stat"]}
                 >{`${attack_range}`}</span>
               </div>
-              <div className={`${ abilities[0].cast_ranges[0] === 0 ? styleAttrRolStar["hidden-block"] : styleAttrRolStar["wrapper-stats-img-value"]}`}>
+              <div
+                className={`${
+                  abilities[0].cast_ranges[0] === 0
+                    ? styleAttrRolStar["hidden-block"]
+                    : styleAttrRolStar["wrapper-stats-img-value"]
+                }`}
+              >
                 <img
                   width="24"
                   height="24"
@@ -292,4 +299,5 @@ import vision from "../../../img/icon_vision.png";
   );
 }
 
-export default memo(HeroAttrsRolsStat)
+ const HeroAttrsRolsStatMemo = memo(HeroAttrsRolsStat);
+ export default HeroAttrsRolsStatMemo

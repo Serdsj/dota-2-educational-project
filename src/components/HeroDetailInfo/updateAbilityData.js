@@ -8,7 +8,7 @@ export function updateAbilityData(
     !currentHeroData.data?.length ||
     !currentHeroData.data[0]?.abilities?.length
   ) {
-    return []; // Возвращаем пустой массив, если данных нет или они некорректны
+    return [];
   }
 
   const { abilities, name_loc } = currentHeroData.data[0];

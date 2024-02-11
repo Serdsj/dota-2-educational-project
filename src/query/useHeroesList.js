@@ -20,7 +20,6 @@ export function useHeroesList() {
   });
 
   const sortedData = useMemo(() => {
-    // этот хук нужен для оптимизации. Сортировка будет проводиться только при изменении зависимости
     if (!Array.isArray(data)) {
       return [];
     }

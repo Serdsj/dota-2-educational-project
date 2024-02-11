@@ -1,4 +1,4 @@
-@import "../../../layouts/scssLayout/variablesScss/variablesScss.scss";
+@import "../../../scssGlobalStyles/variables/variables.scss";
 
 
 ul {
@@ -11,7 +11,7 @@ ul {
 
 .wrapper-attrs-rol-stat {
   width: 100%;
-  height: fit-content; // блок изменяет высоту в зависимости от содержимого.  С этим свойством высота элемента будет адаптироваться к его содержимому.
+  height: fit-content;
   min-height: 221px;
   background: linear-gradient(80deg, $start-bc-color 0%, $finish-bc-color 100%);
   border-top: 2px solid $border-top-black-color;
@@ -192,8 +192,7 @@ ul {
       .roles-list {
         width: 100%;
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-flow: row wrap; /* Объединение flex-direction и flex-wrap */
         align-items: center;
         justify-content: space-between;
       }

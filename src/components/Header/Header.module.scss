@@ -1,4 +1,4 @@
-@import "../../layouts/scssLayout/variablesScss/variablesScss.scss";
+@import "../../scssGlobalStyles/variables/variables.scss";
 
 .header {
   width: 100%;
@@ -46,7 +46,7 @@
       justify-content: space-between;
 
       .game-logo {
-        min-width: 0px;
+        min-width: 0;
         width: 150px;
       }
     }

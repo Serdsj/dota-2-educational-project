@@ -10,6 +10,6 @@ export default function Background({ children, className }) {
 }
 
 Background.propTypes = {
-    children: PropTypes.node, // React элементы, строки, числа, фрагменты и т.д.
-    className: PropTypes.string // Строка
+    children: PropTypes.node,
+    className: PropTypes.string 
 };

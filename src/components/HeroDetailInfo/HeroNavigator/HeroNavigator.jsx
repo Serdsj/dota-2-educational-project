@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 export default function HeroNavigator({ prevName, nextName}) {
  
-  const { heroName } = useParams();  // это имя которое вытащили из адресса страницы
-  const { pathname } = useLocation(); // это часть url /hero/axe
+  const { heroName } = useParams();
+  const { pathname } = useLocation();
 
   const prevHeroPath = pathname.replace( heroName, prevName );
  const nextHeroPath = pathname.replace( heroName, nextName );

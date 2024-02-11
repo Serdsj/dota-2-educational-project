@@ -1,15 +1,14 @@
 import { useContext, useState, useEffect, memo } from "react";
 import { HeroDataContext } from "../../../pages/HeroPage/HeroPage";
 import { nameAttributesHero, attributesHero } from "./heroDataDescription";
-import  HeroBioOrHype  from "./HeroDescriptionBioOrHype/HeroDescriptionBioOrHype";
+import HeroBioOrHypeMemo from "./HeroDescriptionBioOrHype/HeroDescriptionBioOrHype";
 import { mediaLinks } from "../../../shared/utils/createUrl";
 import HeroNavigator from "../HeroNavigator/HeroNavigator";
 import heroDescpStyle from "./HeroDescription.module.scss";
-import HeroAbilities from "../HeroAbilities/HeroAbilities";
-import TreeOfTalents from "../HeroTreeOfTalents/HeroTreeOfTalents";
+import HeroAbilitiesMemo from "../HeroAbilities/HeroAbilities";
+import TreeOfTalentsMemo from "../HeroTreeOfTalents/HeroTreeOfTalents";
 
-
- function HeroDescription() {
+function HeroDescription() {
   const { currentHeroData, prevHeroData, nextHeroData } =
     useContext(HeroDataContext);
 
@@ -17,23 +16,21 @@ import TreeOfTalents from "../HeroTreeOfTalents/HeroTreeOfTalents";
   const { data: prevHero } = prevHeroData;
   const { data: nextHero } = nextHeroData;
 
-  const [isCurrentAnimation, setIsCurrentAnimation ] = useState(false)
+  const [isCurrentAnimation, setIsCurrentAnimation] = useState(false);
 
-  useEffect (() => {
+  useEffect(() => {
     if (!currentHero || !currentHero[0]?.id) {
-      return
+      return;
     }
-  // Сбросить анимацию
-  setIsCurrentAnimation(false);
 
-  // Минимальная задержка для обеспечения перерисовки
-  const timeoutId = setTimeout(() => {
-    setIsCurrentAnimation(true);
-  }, 10); // 10 мс должно быть достаточно для большинства браузеров
+    setIsCurrentAnimation(false);
 
-  // Очистить таймер при очистке эффекта
-  return () => clearTimeout(timeoutId);
-  }, [currentHero])
+    const timeoutId = setTimeout(() => {
+      setIsCurrentAnimation(true);
+    }, 10);
+
+    return () => clearTimeout(timeoutId);
+  }, [currentHero]);
 
   if (
     !currentHero ||
@@ -60,21 +57,28 @@ import TreeOfTalents from "../HeroTreeOfTalents/HeroTreeOfTalents";
   const { name_loc: prevHeroName } = prevHero[0];
   const { name_loc: nextHeroName } = nextHero[0];
 
-  // Теперь безопасно обращаемся к элементам массивов
   const currentName = name_loc;
   const prevName = prevHeroName.toLowerCase().split(" ").join("");
   const nextName = nextHeroName.toLowerCase().split(" ").join("");
 
-  const currentAttributeHero = attributesHero[primary_attr] ?? null; // картинка атрибута
-  const currentNameAttrHero = nameAttributesHero[primary_attr] ?? null; // название атрибута
+  const currentAttributeHero = attributesHero[primary_attr] ?? null;
+  const currentNameAttrHero = nameAttributesHero[primary_attr] ?? null;
   return (
     <section className={heroDescpStyle["hero-description"]}>
-      <div className={`${isCurrentAnimation ? heroDescpStyle["background-animation"] : ""} ${heroDescpStyle["background-line"]}`}></div>
-      <div className={`${isCurrentAnimation ? heroDescpStyle["animation-move-right"] : ""}  ${heroDescpStyle["wrapper-hero-video"]}`} >
+      <div
+        className={`${
+          isCurrentAnimation ? heroDescpStyle["background-animation"] : ""
+        } ${heroDescpStyle["background-line"]}`}
+      ></div>
+      <div
+        className={`${
+          isCurrentAnimation ? heroDescpStyle["animation-move-right"] : ""
+        }  ${heroDescpStyle["wrapper-hero-video"]}`}
+      >
         <video
-          className={heroDescpStyle["hero-video"]} 
+          className={heroDescpStyle["hero-video"]}
           key={id}
-          autoPlay={true} 
+          autoPlay={true}
           preload="auto"
           loop
           playsInline
@@ -82,7 +86,7 @@ import TreeOfTalents from "../HeroTreeOfTalents/HeroTreeOfTalents";
           poster={mediaLinks.createUrl({
             type: "heroVideo",
             heroName: currentName,
-            formatVideo: "jpg", 
+            formatVideo: "png",
           })}
         >
           <source
@@ -94,16 +98,22 @@ import TreeOfTalents from "../HeroTreeOfTalents/HeroTreeOfTalents";
             })}
           />
 
-          <img src={mediaLinks.createUrl({
-            type: "heroVideo",
-            heroName: currentName,
-            formatVideo: "jpg", 
-          })} alt={`picture of hero ${currentName}`} />
-
+          <img
+            src={mediaLinks.createUrl({
+              type: "heroVideo",
+              heroName: currentName,
+              formatVideo: "png",
+            })}
+            alt={`picture of hero ${currentName}`}
+          />
         </video>
       </div>
       <div className={heroDescpStyle["background-fade-bottom"]}></div>
-      <div className={`${isCurrentAnimation ? heroDescpStyle["animation-slide-down"] : ""} ${heroDescpStyle["hero-vertical-bar"]}`}>
+      <div
+        className={`${
+          isCurrentAnimation ? heroDescpStyle["animation-slide-down"] : ""
+        } ${heroDescpStyle["hero-vertical-bar"]}`}
+      >
         <img
           src={currentAttributeHero}
           alt={`picture of ${currentNameAttrHero}`}
@@ -116,7 +126,9 @@ import TreeOfTalents from "../HeroTreeOfTalents/HeroTreeOfTalents";
         <div className={heroDescpStyle["vertical-line-bar"]}></div>
       </div>
       <section
-        className={`${isCurrentAnimation ? heroDescpStyle["animated-appear"] : ""} ${heroDescpStyle["description"]}`}
+        className={`${
+          isCurrentAnimation ? heroDescpStyle["animated-appear"] : ""
+        } ${heroDescpStyle["description"]}`}
       >
         <div className={heroDescpStyle["attribute"]}>
           <img
@@ -130,7 +142,7 @@ import TreeOfTalents from "../HeroTreeOfTalents/HeroTreeOfTalents";
         </div>
         <h1 className={heroDescpStyle["name-of-hero"]}>{currentName}</h1>
         <p className={heroDescpStyle["short-description"]}>{npe_desc_loc}</p>
-        <HeroBioOrHype
+        <HeroBioOrHypeMemo
           bioHero={bio_loc}
           hypeHero={hype_loc}
           typeAttack={attack_capability}
@@ -139,15 +151,21 @@ import TreeOfTalents from "../HeroTreeOfTalents/HeroTreeOfTalents";
       </section>
       <HeroNavigator prevName={prevName} nextName={nextName} />
 
-      <div className={` ${isCurrentAnimation ? heroDescpStyle["animated-appear"] : ""} ${heroDescpStyle["wrapper-top-skills-bar"]}`}>
+      <div
+        className={` ${
+          isCurrentAnimation ? heroDescpStyle["animated-appear"] : ""
+        } ${heroDescpStyle["wrapper-top-skills-bar"]}`}
+      >
         <h3 className={heroDescpStyle["title-abilities"]}>ABILITIES</h3>
         <div className={heroDescpStyle["wrapper-talents-abilities"]}>
-          <TreeOfTalents heroTalents={talents} heroData={currentHero[0]} />
-          <HeroAbilities heroData={currentHero[0]} />
+          <TreeOfTalentsMemo heroTalents={talents} heroData={currentHero[0]} />
+          <HeroAbilitiesMemo heroData={currentHero[0]} />
         </div>
       </div>
     </section>
   );
 }
 
-export default memo (HeroDescription)
+const  HeroDescriptionMemo = memo(HeroDescription);
+
+export default HeroDescriptionMemo

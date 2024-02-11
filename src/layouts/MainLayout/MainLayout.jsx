@@ -5,7 +5,7 @@ import styleContent from "./MainLayout.module.scss";
 import PropTypes from 'prop-types';
 
 
-export default function MainLayout({ children, className }) { // это скелет
+export default function MainLayout({ children, className }) {
     return (
     <>
         <Background className={className}>  
@@ -20,6 +20,6 @@ export default function MainLayout({ children, className }) { // это скел
 }
 
 MainLayout.propTypes = {
-    children: PropTypes.node, // React элементы, строки, числа, фрагменты и т.д.
-    className: PropTypes.string, // Строка для классов CSS
+    children: PropTypes.node, 
+    className: PropTypes.string, 
 }

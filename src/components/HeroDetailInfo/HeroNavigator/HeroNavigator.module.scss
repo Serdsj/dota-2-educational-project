@@ -1,4 +1,4 @@
-@import "../../../layouts/scssLayout/variablesScss/variablesScss.scss";
+@import "../../../scssGlobalStyles/variables/variables.scss";
 
 .wrapper-navigator {
   width: 150px;
@@ -41,8 +41,7 @@
   height: 64px;
   border: 2px solid $text-color-white;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+flex-flow: row wrap;
   padding: 10px;
   justify-content: space-between;
   align-items: center;

@@ -74,4 +74,6 @@ TreeOfTalents.propTypes= {
 }
 
 
-export default memo (TreeOfTalents)
+ const TreeOfTalentsMemo =  memo (TreeOfTalents)
+
+ export default TreeOfTalentsMemo

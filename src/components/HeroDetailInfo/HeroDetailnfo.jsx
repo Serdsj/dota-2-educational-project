@@ -1,27 +1,35 @@
-import { useContext, createContext, useMemo, useRef} from "react";
+import { useContext, createContext, useMemo, useRef } from "react";
 import { HeroDataContext } from "../../pages/HeroPage/HeroPage";
 import { useCurrentAbilityData } from "./useCurrentAbilityData";
-import {updateAbilityData} from "./updateAbilityData.js"
+import { updateAbilityData } from "./updateAbilityData.js";
 import {
   basicUrl,
   shardUrl,
   scepterUrl,
 } from "../../shared/utils/createBasicShardScepterUrl";
-import HeroDescription from "./HeroDescription/HeroDescription";
-import HeroAttrsRolsStat from "./HeroAttrsRoslStat/HeroAttrsRolsStat";
+import HeroDescriptionMemo from "./HeroDescription/HeroDescription";
+import HeroAttrsRolsStatMemo from "./HeroAttrsRoslStat/HeroAttrsRolsStat";
 import HeroAbilityDetails from "./HeroAbilityDetails/HeroAbilityDetails";
 import HeroSwitch from "./HeroSwitch/HeroSwitch";
 import styleDetailInfo from "./HeroDetailnfo.module.scss";
 
 export let AbilityContext = createContext(null);
 
-export default  function HeroDetailInfo() {
+export default function HeroDetailInfo() {
   const { currentHeroData } = useContext(HeroDataContext);
   const scollToRef = useRef();
-  const allAbilities = useMemo(() => updateAbilityData(currentHeroData, basicUrl, shardUrl, scepterUrl), [currentHeroData.data]);
+  const allAbilities = useMemo(
+    () => updateAbilityData(currentHeroData, basicUrl, shardUrl, scepterUrl),
+    [currentHeroData]
+  );
 
-  const { abilityData, activeAbilityId, isAnimating,  videoRefs, handleAbilityClick } =
-    useCurrentAbilityData(allAbilities);
+  const {
+    abilityData,
+    activeAbilityId,
+    isAnimating,
+    videoRefs,
+    handleAbilityClick,
+  } = useCurrentAbilityData(allAbilities);
 
   if (currentHeroData.isError) {
     console.error(`Error: ${currentHeroData.error.message}`);
@@ -38,13 +46,13 @@ export default  function HeroDetailInfo() {
   return (
     <div className={styleDetailInfo["wrapper-flex"]}>
       <AbilityContext.Provider value={{ handleAbilityClick, scollToRef }}>
-        <HeroDescription />
-        <HeroAttrsRolsStat />
+        <HeroDescriptionMemo />
+        <HeroAttrsRolsStatMemo />
         <HeroAbilityDetails
           abilityData={abilityData}
           activeAbilityId={activeAbilityId}
           isAnimating={isAnimating}
-          videoRefs= {videoRefs}
+          videoRefs={videoRefs}
           handleAbilityClick={handleAbilityClick}
           allAbilities={allAbilities}
         />

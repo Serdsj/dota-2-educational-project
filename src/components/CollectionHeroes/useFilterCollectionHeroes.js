@@ -52,7 +52,7 @@ export function useFilterCollectionHeroes(valueInput = "", heroeInfo = []) {
 
     const timer = setTimeout(() => {
       setFilterList(resultFilter);
-    }, 450); // Задержка для того чтобы класс успел добавиться
+    }, 450);
 
     return () => clearTimeout(timer);
   }, [valueInput, currentFilterAttr, currentFilterComp, heroeInfo]);

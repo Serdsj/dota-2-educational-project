@@ -13,8 +13,7 @@ export function useHeroesData(heroesList, heroName) {
   }, [heroesList]);
 
   const heroNameToIndexMap = useMemo(() => {
-    const collectionDataIndex = new Map(); // объект именами и индексами
-
+    const collectionDataIndex = new Map();
     updatedHeroesList.forEach((hero, index) => {
       collectionDataIndex.set(hero.name_loc, index);
     });

@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { StrictMode } from 'react';
 
-const queryClient = new QueryClient(); // здесь основные настройки 
+const queryClient = new QueryClient(); 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -16,7 +16,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </QueryClientProvider>
   </StrictMode>
 );
-
-// QueryClientProvider нужен для входа в приложение 
-
-// RouterProvider отвечает за рендеринг на странице, а router за настройку маршрутов

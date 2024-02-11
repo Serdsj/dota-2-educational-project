@@ -1,5 +1,5 @@
-import styleGetDetails from "./getAbilityDetails.module.scss";
-export function getAbilityDetails(currentAbil) {
+import styleGetDetails from "./GetAbilityDetails.module.scss";
+export function GetAbilityDetails(currentAbil) {
   let bcAganim = null;
   let bcShard = null;
   let order = 0;

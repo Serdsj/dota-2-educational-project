@@ -3,6 +3,11 @@
     "rules": {    
       "media-feature-range-notation": null,
       "no-invalid-double-slash-comments": null,
-      "rule-empty-line-before": null 
+      "rule-empty-line-before": null,
+      "scss/percent-placeholder-pattern": null,
+      "selector-class-pattern": null,
+      "scss/at-import-partial-extension": null,
+      "declaration-empty-line-before": null,
+      "no-descending-specificity": null 
     }
   }

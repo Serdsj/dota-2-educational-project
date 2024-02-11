@@ -5,7 +5,7 @@ import { HeroDataContext } from "../../../pages/HeroPage/HeroPage";
 import { DamageType } from "./HeroAbilityDetails_DamageType/HeroAbilityDetails_DamageType";
 import styleAbilityDetail from "./HeroAbilityDetails.module.scss";
 import { mediaLinks } from "../../../shared/utils/createUrl";
-import { getAbilityDetails } from "./getAbilityDetails/getAbilityDetails";
+import { GetAbilityDetails } from "./GetAbilityDetails/GetAbilityDetails";
 import {
   formattingText,
   formattingTextShard,
@@ -37,7 +37,6 @@ export default function HeroAbilityDetails({
     cooldowns,
     lore_loc,
     mana_costs,
-    name,
     special_values,
     dispellable,
     immunity,
@@ -57,22 +56,29 @@ export default function HeroAbilityDetails({
           <div className={styleAbilityDetail["video-container"]}>
             <ul className={"video-list"}>
               {allAbilities.map((ability) => (
-               <li key={ability.id} className="card" style={{ visibility: ability.id === activeAbilityId ? 'visible' : 'hidden' }}>
+                <li
+                  key={ability.id}
+                  className="card"
+                  style={{
+                    visibility:
+                      ability.id === activeAbilityId ? "visible" : "hidden",
+                  }}
+                >
                   <video
                     className={`lazy ${styleAbilityDetail["ability-video"]}`}
                     key={ability.id}
-                    ref={el => videoRefs.current.set(ability.id, el)}
+                    ref={(el) => videoRefs.current.set(ability.id, el)}
                     autoPlay
                     preload="auto"
                     loop
                     playsInline
                     muted
                     poster={ability.abilityVideoUrlJpg}
-                    data-src-webm={ability.abilityVideoUrlWebm} // Добавляем data-src-webm
-                    data-src-mp4={ability.abilityVideoUrlMp4}  // Добавляем data-src-mp4
+                    data-src-webm={ability.abilityVideoUrlWebm}
+                    data-src-mp4={ability.abilityVideoUrlMp4}
                   >
-                       <source type="video/webm" />
-                      <source type="video/mp4" />
+                    <source type="video/webm" />
+                    <source type="video/mp4" />
                   </video>
                 </li>
               ))}
@@ -89,7 +95,7 @@ export default function HeroAbilityDetails({
           >
             {allAbilities.map(function (currentAbil) {
               const { bcAganim, bcShard, order } =
-                getAbilityDetails(currentAbil);
+              GetAbilityDetails(currentAbil);
               return (
                 <li
                   key={currentAbil.id}
@@ -121,15 +127,31 @@ export default function HeroAbilityDetails({
         <div className={styleAbilityDetail["ability-right"]}>
           <div className={styleAbilityDetail["wrapper-ability-rigth"]}>
             <div className={styleAbilityDetail["abil-icon-text-description"]}>
-              <img
-                src={mediaLinks.createUrl({
-                  type: "abilityPicture",
-                  heroName: currentHero[0].name_loc,
-                  abilityName: name,
+              <ul>
+                {allAbilities.map(function (imgItem) {
+                  if (imgItem.desc_loc) {
+                    return (
+                      <li key={imgItem.id}>
+                        <img
+                          alt={`${imgItem.name_loc} picture`}
+                          className={styleAbilityDetail["ability-img"]}
+                          style={{
+                            display:
+                              imgItem.name_loc === name_loc ? "block" : "none",
+                          }}
+                          src={mediaLinks.createUrl({
+                            type: "abilityPicture",
+                            heroName: currentHero[0].name_loc,
+                            abilityName: imgItem.name,
+                          })}
+                          loading="lazy"
+                        />
+                      </li>
+                    );
+                  }
                 })}
-                alt={`${name_loc} picture`}
-                className={styleAbilityDetail["ability-img"]}
-              />
+              </ul>
+
               <div className={styleAbilityDetail["wrapper-text-description"]}>
                 <h3 className={styleAbilityDetail["name-of-ability"]}>
                   {name_loc}
@@ -180,9 +202,7 @@ export default function HeroAbilityDetails({
             <div className={styleAbilityDetail["wrapper-details-ability"]}>
               <div className={styleAbilityDetail["generic-value"]}>
                 <div className={styleAbilityDetail["column"]}>
-                  <DamageType damageValue={damage} />
-                </div>
-                <div className={styleAbilityDetail["column"]}>
+                <DamageType damageValue={damage} />
                   {immunity !== 0 ? (
                     <div
                       className={
@@ -267,6 +287,7 @@ export default function HeroAbilityDetails({
                       src={cooldownPicture}
                       alt={"cooldown picture"}
                       className={styleAbilityDetail["picture-cooldown"]}
+                      loading="lazy"
                     />
                     <span className={styleAbilityDetail["quentity-of-values"]}>
                       {cooldowns.join("/")}
@@ -291,6 +312,7 @@ export default function HeroAbilityDetails({
 }
 
 HeroAbilityDetails.propTypes = {
+  videoRefs: PropTypes.object,
   abilityData: PropTypes.shape({
     name_loc: PropTypes.string,
     damage: PropTypes.number,
@@ -327,12 +349,3 @@ HeroAbilityDetails.propTypes = {
     })
   ),
 };
-
-// damage 1 - это физа, 2 - это магия , 4 - это чистый
-// attack_capability - 1 это No Target
-// dispellable - 3 это не рассеиваемый, 2 рассеиваемый, 0 вообще не вносим
-// immunity - 4 это no, 3 - это yes
-// behavior - 2 это passiv
-// behavior - большое число это  unit - target
-// behavior - "2052" это No Target
-// behaivor - "48" это Point Target

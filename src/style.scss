@@ -1,14 +1,14 @@
-@import "/src//layouts/scssLayout/variablesScss/variablesScss.scss";
+@import "/src/scssGlobalStyles/variables/variables";
 
 @font-face {
-  font-family: reaver; /* Изменено на строчные */
+  font-family: reaver;
   src: local(reaver), url("./fonts/Reaver-SemiBold.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: radiance; /* Изменено на строчные */
+  font-family: radiance; 
   src: local(radiance), url("./fonts/radiance.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -27,7 +27,7 @@ html {
 
 body {
   color: $text-color-white;
-  font-family: reaver, serif; /* Изменено */
+  font-family: reaver, serif; 
   font-size: 18px;
   line-height: 1.5;
   font-weight: 400;

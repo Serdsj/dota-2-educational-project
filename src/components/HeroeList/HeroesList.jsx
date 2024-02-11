@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
     if (currentFilterAttr !== null && currentData.primary_attr !== currentFilterAttr) {
       return false;
     }
-  
+
     // Если установлен фильтр по сложности и герой не соответствует этому фильтру
     else if (currentFilterComp !== null && currentData.complexity !== currentFilterComp) {
       return false;
@@ -27,7 +27,7 @@ import PropTypes from 'prop-types';
 
   return (
     <ul className={`${stylesHList["heroes__list"]}`}>
-      {heroesData.map((currentData) => {   
+      {heroesData.map((currentData) => {
         return (
           <HeroeItem
             key={currentData.id}
@@ -35,7 +35,7 @@ import PropTypes from 'prop-types';
             id={currentData.id}
             localName={currentData.name_loc}
             attr={currentData.primary_attr}
-            isVisible={hasVisible(currentData)}       
+            isVisible={hasVisible(currentData)}
           />
         );
       })}
@@ -47,7 +47,9 @@ HeroesList.propTypes= {
   heroesData: PropTypes.array,
   currentFilterAttr: PropTypes.number,
   currentFilterComp: PropTypes.number,
-  searchValue: PropTypes.string, 
+  searchValue: PropTypes.string,
 }
 
-export default memo(HeroesList)
+const HeroesListMemo = memo(HeroesList)
+
+export default HeroesListMemo

@@ -11,7 +11,7 @@ export let HeroDataContext = createContext(null);
 export default function HeroPage() {
   
   const { data: sortedData } = useHeroesList();
-  const { heroName } = useParams();  // это имя которое вытащили из адресса страницы
+  const { heroName } = useParams();
   const { currentHeroData, prevHeroData, nextHeroData } = useHeroesData(sortedData, heroName);
 
   return (

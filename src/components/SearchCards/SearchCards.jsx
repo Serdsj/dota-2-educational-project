@@ -66,7 +66,9 @@ SearchCards.propTypes= {
   bindValue: PropTypes.func.isRequired,
   handleClickFilter: PropTypes.func.isRequired,
   currentFilterAttr: PropTypes.number,
-  currentFilterComp: PropTypes.number, 
+  currentFilterComp: PropTypes.number,
 }
 
-export default memo (SearchCards)
+ const SearchCardsMemo = memo (SearchCards)
+
+ export default SearchCardsMemo

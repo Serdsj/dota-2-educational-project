@@ -103,4 +103,6 @@ HeroBioOrHype.propTypes = {
   complexity: PropTypes.number,
 };
 
-export default memo(HeroBioOrHype);
+ const HeroBioOrHypeMemo = memo(HeroBioOrHype);
+
+ export default HeroBioOrHypeMemo

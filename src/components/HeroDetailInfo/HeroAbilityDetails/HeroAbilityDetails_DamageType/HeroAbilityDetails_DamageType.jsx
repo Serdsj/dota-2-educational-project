@@ -7,15 +7,15 @@ export function DamageType({ damageValue }) {
   switch (damageValue) {
     case 1:
       damageType = "Physical";
-      textStyle = { color: "rgb(255, 0, 0)" }; // Устанавливаем красный цвет текста для физического урона
+      textStyle = { color: "rgb(255, 0, 0)" };
       break;
     case 2:
       damageType = "Magical";
-      textStyle = { color: "rgb(163, 220, 238)" }; // Устанавливаем синий цвет текста для магического урона
+      textStyle = { color: "rgb(163, 220, 238)" };
       break;
     case 4:
       damageType = "Pure";
-      textStyle = { color: "orange" }; // Устанавливаем оранжевый цвет текста для чистого урона
+      textStyle = { color: "orange" };
       break;
     default:
       damageType = null;

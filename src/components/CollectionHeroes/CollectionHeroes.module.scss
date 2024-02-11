@@ -1,4 +1,4 @@
-@import "../../layouts/scssLayout/variablesScss/variablesScss.scss";
+@import "../../scssGlobalStyles/variables/variables.scss";
 
 .heroes {
   max-width: 1200px;
@@ -56,17 +56,17 @@
 
 @keyframes slide-up {
   from {
-    transform: translateY(100px); // Начало смещения снизу
-    opacity: 0; // Начальная прозрачность
+    transform: translateY(100px); 
+    opacity: 0;
   }
   to {
-    transform: translateY(0); // Конечное положение
-    opacity: 1; // Полная видимость
+    transform: translateY(0); 
+    opacity: 1; 
   }
 }
 
 .animated-appear {
-  animation: slide-up 2s ease-out forwards; // Применение анимации
+  animation: slide-up 2s ease-out forwards; 
 }
 
 @media (max-width: 1000px) {

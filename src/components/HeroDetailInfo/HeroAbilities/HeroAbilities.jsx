@@ -90,4 +90,5 @@ HeroAbilities.propTypes = {
 };
 
 
-export default memo (HeroAbilities)
+const HeroAbilitiesMemo = memo(HeroAbilities);
+export default HeroAbilitiesMemo;
