@@ -233,8 +233,8 @@ ul {
         }
 
         .filled {
-          height: 100%;
           width: 0%;
+          height: 100%;
           background-color: $text-color-white;
           box-shadow: 0 0 10px $bc-color-filled, 0 0 10px $bc-color-filled;
           position: absolute;

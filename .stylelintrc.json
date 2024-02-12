@@ -1,13 +1,39 @@
 {
-    "extends": "stylelint-config-standard-scss",
-    "rules": {    
-      "media-feature-range-notation": null,
-      "no-invalid-double-slash-comments": null,
-      "rule-empty-line-before": null,
-      "scss/percent-placeholder-pattern": null,
-      "selector-class-pattern": null,
-      "scss/at-import-partial-extension": null,
-      "declaration-empty-line-before": null,
-      "no-descending-specificity": null 
-    }
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-recommended"
+  ],
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-order",
+    "stylelint-declaration-block-no-ignored-properties"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": [true, {
+      "ignoreAtRules": [
+        "extend",
+        "else",
+        "if",
+        "include",
+        "mixin"
+      ]
+    }],
+    "media-feature-range-notation": null,
+    "no-invalid-double-slash-comments": null,
+    "rule-empty-line-before": null,
+    "scss/percent-placeholder-pattern": null,
+    "selector-class-pattern": null,
+    "scss/at-import-partial-extension": null,
+    "declaration-empty-line-before": null,
+    "no-descending-specificity": null,
+    "order/order": [
+      "custom-properties",
+      "declarations"
+    ],
+    "order/properties-order": [
+      "width",
+      "height"
+    ]
   }
+}
