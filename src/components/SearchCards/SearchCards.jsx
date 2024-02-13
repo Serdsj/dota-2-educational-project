@@ -1,5 +1,6 @@
 import stylesSC from "./SearchCards.module.scss";
 import { filterAttrButtons, filterCompButtons } from "./dataFilter";
+import  search  from "../../img/search.svg";
 import PropTypes from 'prop-types';
 import { memo } from "react";
 
@@ -45,7 +46,7 @@ import { memo } from "react";
       </div>
 
       <div className={stylesSC["wrapper-search-form"]}>
-        <div className={stylesSC["search-picture"]}></div>
+        <img className={stylesSC["search-picture"]} src={search} width="26" height="26" alt="picture of search" />
         <form id="search-form" action="" className={stylesSC["search-form"]}>
           <label htmlFor="search"></label>
           <input

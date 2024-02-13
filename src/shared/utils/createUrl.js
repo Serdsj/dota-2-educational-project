@@ -191,3 +191,5 @@ export const mediaLinks = new HeroUrlCreator(
 	CONFIG.ABILITY_IMG_URL,
 	CONFIG.ABILITY_VIDEO_URL
 );
+
+console.log(import.meta.env.VITE_API_URL);

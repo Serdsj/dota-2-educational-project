@@ -9,7 +9,8 @@
     "server": "node ./server/index.js",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "lint:scss": "stylelint \"**/*.scss\""
+    "lint:scss": "stylelint \"**/*.scss\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.17.19",
@@ -32,11 +33,18 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "http-proxy": "^1.18.1",
+    "husky": "^9.0.10",
     "sass": "^1.69.5",
     "stylelint": "^16.2.1",
     "stylelint-order": "^6.0.4",
     "vite": "^5.0.8",
     "vite-plugin-image-optimizer": "^1.1.7",
     "vite-plugin-stylelint": "^5.3.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run lint:scss",
+      "post-commit": "git push"
+    }
   }
 }

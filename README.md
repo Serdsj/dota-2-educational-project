@@ -1,8 +1,158 @@
 # Dota 2 React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center" style="display: flex; justify-content: space-between;"> 
+   <img alt="GitHub top language" src="https://img.shields.io/badge/SCSS-26.6%25-blue">
+    <img alt="GitHub top language" src="https://img.shields.io/badge/javascript-72.9%25-orange">
+  <img alt="GitHub top language" src="https://img.shields.io/badge/languages-3-green">
+  <img alt="GitHub top language" src="https://img.shields.io/badge/code%20size-108%20kb-yellow">
+</p>
 
-Currently, two official plugins are available:
+<p align="center">
+  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#eyes-website">Original website</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  &nbsp;
+  <a href="#hammer-structure">Structure</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  &nbsp;
+  <a href="#arrow_right_hook-Hooks">Hooks</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  &nbsp;
+  <a href="#pushpin-scripts">Scripts</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+   &nbsp;
+  <a href="https://pizza-vue.herokuapp.com/">Preview</a>
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+![App Screenshot](./screenShots/main-screen.JPG)
+![App Screenshot](./screenShots/screen-of-hero-page.JPG)
+![App Screenshot](./screenShots/ability-details-block.JPG)
+![App Screenshot](./screenShots/mobile-version.JPG)
+
+
+## :rocket: Technologies
+
+This project was developed using the following technologies:
+
+- [React.js](https://react.dev/)
+- [TanStack Query V5](https://tanstack.com/query/latest/docs/framework/react/overview)
+- [react router](https://reactrouter.com/en/main)
+- [vite](https://vitejs.dev/)
+- [Css modules](https://github.com/css-modules/css-modules)
+- [scss/sass](https://sass-lang.com/)
+- [Stylelint](https://stylelint.io/)
+- [vite-plugin-image-optimizer](https://github.com/FatehAK/vite-plugin-image-optimizer)
+- [eslint-plugin-react](eslint-plugin-react)
+- [prettier](https://prettier.io/)
+
+  ## :information_source: How To Use
+
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v10.16][nodejs] or higher + [npm 6.14.8](https://www.npmjs.com/) or higher installed on your computer. From your command line:
+
+```bash
+# Clone this repository
+$ git clone https://github.com/SergeyLif/dota-2-project
+
+# Go into the repository
+$ cd dota2
+
+# Install dependencies
+$ npm install
+
+# Run the app
+$ npm run dev
+```
+
+## :arrow_right_hook: Hooks
+
+Make some change in the files
+
+```bash
+$ git add . # add all the changes made
+
+$ git commit -m "new changes" # create commit
+
+# then there is a check with a linter and a styleLint. If no errors are found, run a post-commit which will push the changes to github
+
+# if you want to send a commit without any checks use --no-verify
+$ git commit -m "keep calm and commit" --no-verify
+
+# Hooks can be changed or removed in package.json
+"husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run lint:scss",
+      "post-commit": "git push"
+    }
+  },
+
+```
+
+## :pushpin: Scripts
+
+```bash
+
+$ npm run build # starting application build
+
+$ npm run preview # preview application
+
+$ npm run lint # lint check runs
+
+$ npm run lint:scss # check scss 
+
+$ npm run dev # start an application in development mode 
+
+```
+
+
+## :hammer: Structure
+
+```bash
+
+
+├───dist
+│   └───assets
+├───node_modules
+├───public
+│   └───assets
+├───screenShots
+├───server
+└───src
+    ├───components
+    │   ├───BackgroundPage
+    │   ├───CollectionHeroes
+    │   ├───Footer
+    │   ├───Header
+    │   ├───HeroDetailInfo
+    │   │   ├───HeroAbilities
+    │   │   ├───HeroAbilityDetails
+    │   │   │   ├───HeroAbilityDetails_DamageType
+    │   │   │   └───HeroAbilityDetails_GetAbilityDetails
+    │   │   ├───HeroAttrsRoslStat
+    │   │   ├───HeroDescription
+    │   │   │   └───HeroDescriptionBioOrHype
+    │   │   ├───HeroNavigator
+    │   │   ├───HeroSwitch
+    │   │   └───HeroTreeOfTalents
+    │   ├───HeroeItem
+    │   ├───HeroeList
+    │   └───SearchCards
+    ├───fonts
+    ├───img
+    ├───layouts
+    │   └───MainLayout
+    ├───pages
+    │   ├───HeroesFilterPage
+    │   └───HeroPage
+    ├───query
+    ├───scssGlobalStyles
+    │   ├───placeHolders
+    │   └───variables
+    └───shared
+        ├───api
+        ├───config
+        └───utils
+
+
+## :eyes: Original website
+
+[Dota 2 website]([https://www.dota2.com/heroes])
+
+---
