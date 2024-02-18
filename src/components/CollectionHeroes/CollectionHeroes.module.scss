@@ -1,4 +1,4 @@
-@import "../../scssGlobalStyles/variables/variables.scss";
+@import "../../styles/variables.scss";
 
 .heroes {
   max-width: 1200px;
@@ -56,17 +56,17 @@
 
 @keyframes slide-up {
   from {
-    transform: translateY(100px); 
+    transform: translateY(100px);
     opacity: 0;
   }
   to {
-    transform: translateY(0); 
-    opacity: 1; 
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
 .animated-appear {
-  animation: slide-up 2s ease-out forwards; 
+  animation: slide-up 2s ease-out forwards;
 }
 
 @media (max-width: 1000px) {
@@ -94,7 +94,7 @@
 }
 
 @media (max-width: 500px) {
-  
+
   .heroes__title {
     font-size: 26px;
   }

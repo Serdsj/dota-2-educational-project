@@ -1,4 +1,4 @@
-import styleTypeAttack from "./HeroAbilityDetails_DamageType.module.scss";
+import styleTypeAttack from "./HeroAbilityDetailsDamageType.module.scss";
 import PropTypes from 'prop-types';
 export function DamageType({ damageValue }) {
   let damageType;

@@ -1,4 +1,4 @@
-@import "/src/scssGlobalStyles/variables/variables";
+@import "/src/styles/variables";
 
 @font-face {
   font-family: reaver;
@@ -8,7 +8,7 @@
 }
 
 @font-face {
-  font-family: radiance; 
+  font-family: radiance;
   src: local(radiance), url("./fonts/radiance.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -27,7 +27,7 @@ html {
 
 body {
   color: $text-color-white;
-  font-family: reaver, serif; 
+  font-family: reaver, serif;
   font-size: 18px;
   line-height: 1.5;
   font-weight: 400;

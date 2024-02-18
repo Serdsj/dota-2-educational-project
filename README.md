@@ -10,7 +10,7 @@
 <p align="center">
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#eyes-website">Original website</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  <a href="#eyes-website">Original page</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   &nbsp;
   <a href="#hammer-structure">Structure</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   &nbsp;
@@ -22,10 +22,10 @@
 </p>
 
 
-![App Screenshot](./screenShots/main-screen.JPG)
-![App Screenshot](./screenShots/screen-of-hero-page.JPG)
-![App Screenshot](./screenShots/ability-details-block.JPG)
-![App Screenshot](./screenShots/mobile-version.JPG)
+![App Screenshot](./screenshots/main-screen.JPG)
+![App Screenshot](./screenshots/screen-of-hero-page.JPG)
+![App Screenshot](./screenshots/ability-details-block.JPG)
+![App Screenshot](./screenshots/mobile-version.JPG)
 
 
 ## :rocket: Technologies
@@ -45,7 +45,7 @@ This project was developed using the following technologies:
 
   ## :information_source: How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v10.16][nodejs] or higher + [npm 6.14.8](https://www.npmjs.com/) or higher installed on your computer. From your command line:
+To clone and run this application. From your command line:
 
 ```bash
 # Clone this repository
@@ -113,7 +113,6 @@ $ npm run dev # start an application in development mode
 ├───public
 │   └───assets
 ├───screenShots
-├───server
 └───src
     ├───components
     │   ├───BackgroundPage
@@ -142,7 +141,7 @@ $ npm run dev # start an application in development mode
     │   ├───HeroesFilterPage
     │   └───HeroPage
     ├───query
-    ├───scssGlobalStyles
+    ├───styles
     │   ├───placeHolders
     │   └───variables
     └───shared
@@ -151,8 +150,8 @@ $ npm run dev # start an application in development mode
         └───utils
 
 
-## :eyes: Original website
+## :eyes: Original page
 
-[Dota 2 website]([https://www.dota2.com/heroes])
+[Dota 2 website](https://www.dota2.com/heroes)
 
 ---

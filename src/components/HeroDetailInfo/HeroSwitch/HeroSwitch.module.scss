@@ -1,4 +1,4 @@
-@import "../../../scssGlobalStyles/variables/variables.scss";
+@import "../../../styles/variables.scss";
 
 .heroes-switch {
   width: 100%;
@@ -82,7 +82,7 @@
     bottom: -20px;
     max-width: 400px;
     height: auto;
-  
+
     right: 0;
     transition-duration: 0.3s;
   }
@@ -147,10 +147,10 @@
 }
 
 
-@media (max-width: 800px) { 
+@media (max-width: 800px) {
 
   .heroes-switch {
-    
+
     .switch-hero {
       padding: 0 10px;
     }
@@ -161,11 +161,11 @@
 }
 
 
-@media (max-width: 600px) { 
+@media (max-width: 600px) {
 
   .heroes-switch {
     gap: 15px;
-    
+
     .switch-hero {
       padding: 0 10px;
 

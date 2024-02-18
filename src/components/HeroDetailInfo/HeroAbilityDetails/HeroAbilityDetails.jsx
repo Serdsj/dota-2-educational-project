@@ -2,7 +2,7 @@ import { useContext } from "react";
 import PropTypes from "prop-types";
 import { AbilityContext } from "../HeroDetailnfo";
 import { HeroDataContext } from "../../../pages/HeroPage/HeroPage";
-import { DamageType } from "./HeroAbilityDetails_DamageType/HeroAbilityDetails_DamageType";
+import { DamageType } from "./HeroAbilityDetailsDamageType/HeroAbilityDetailsDamageType";
 import styleAbilityDetail from "./HeroAbilityDetails.module.scss";
 import { mediaLinks } from "../../../shared/utils/createUrl";
 import  GetAbilityDetails  from "./HeroAbilityDetails_GetAbilityDetails/GetAbilityDetails";

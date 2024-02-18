@@ -1,4 +1,4 @@
-@import "../../../../scssGlobalStyles/variables/variables.scss";
+@import "../../../../styles/variables.scss";
 
 .hero-bio-or-hype {
   width: 100%;
@@ -173,9 +173,9 @@
 }
 
 
-@media (max-width: 700px) { 
+@media (max-width: 700px) {
    .hero-bio-or-hype {
-     
+
     .wrapper-hype-hero {
       .hype-hero-text {
         font-size: 20px;

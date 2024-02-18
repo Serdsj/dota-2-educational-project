@@ -1,14 +1,9 @@
-import { defineConfig, loadEnv } from "vite";
+import { defineConfig } from "vite";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import react from "@vitejs/plugin-react";
 import stylelint from "vite-plugin-stylelint";
 
-export default ({ mode }) => {
-  const env = loadEnv(mode, process.cwd());
-  const API_URL = `${
-    env.VITE_API_URL ?? "https://dota2-proxy-hero-list.onrender.com/"
-  }`;
-
+export default () => {
   return defineConfig({
     plugins: [
       react(),
@@ -20,18 +15,34 @@ export default ({ mode }) => {
           quality: 90,
         },
         svg: {
-          quality: 90,
+          svgoConfig: {
+            multipass: true,
+            plugins: [
+              {
+                name: "preset-default",
+                params: {
+                  overrides: {
+                    cleanupNumericValues: false,
+                    removeViewBox: false, // https://github.com/svg/svgo/issues/1128
+                  },
+                  cleanupIDs: {
+                    minify: false,
+                    remove: false,
+                  },
+                  convertPathData: false,
+                },
+              },
+              "sortAttrs",
+              {
+                name: "addAttributesToSVGElement",
+                params: {
+                  attributes: [{ xmlns: "http://www.w3.org/2000/svg" }],
+                },
+              },
+            ],
+          },
         },
       }),
     ],
-    server: {
-      cors: true,
-      proxy: {
-        "/api": {
-          target: API_URL,
-          changeOrigin: true,
-        },
-      },
-    },
   });
 };

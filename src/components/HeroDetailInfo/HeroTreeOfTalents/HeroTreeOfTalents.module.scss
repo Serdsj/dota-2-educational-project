@@ -1,4 +1,4 @@
-@import "../../../scssGlobalStyles/variables/variables.scss";
+@import "../../../styles/variables.scss";
 
 .wrapper-tree-of-talents {
   width: 80px;
@@ -9,7 +9,7 @@
   transition-property: transform;
   transition-timing-function: ease-in-out;
   transition-duration: 0.1s;
-  
+
   &:hover {
     transform: scale(1.1);
   }

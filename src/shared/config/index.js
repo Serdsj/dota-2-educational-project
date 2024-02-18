@@ -1,10 +1,10 @@
-const API_HERO_STATS = "/api/heroStats"; // старая много данных героев
-const API_HERO_LIST = "/api/herolist"; // новые, мало данных для героев
-const API_HERO_DATA = "/api/herodata"; // новая, детальная информация про героя, нужно передать hero_id=...
+// const API_HERO_STATS = "/api/heroStats"; // старая много данных героев
+// const API_HERO_LIST = "/herolist"; // новые, мало данных для героев
+// const API_HERO_DATA = "/herodata"; // новая, детальная информация про героя, нужно передать hero_id=...
 
-// const API_HERO_STATS = `/api/heroStats`; // старая много данных героев
-// const API_HERO_LIST = `${import.meta.env.VITE_API_URL}api/herolist`; // новые, мало данных для героев
-// const API_HERO_DATA = `${import.meta.env.VITE_API_URL}api/herodata`; // новая, детальная информация про героя, нужно передать hero_id=...
+const API_HERO_STATS = `/api/heroStats`; // старая много данных героев
+const API_HERO_LIST = `https://${import.meta.env.VITE_API_URL}/herolist`; // новые, мало данных для героев
+const API_HERO_DATA = `https://${import.meta.env.VITE_API_URL}/herodata`; // новая, детальная информация про героя, нужно передать hero_id=...
 
 export const CONFIG = {
 	API_HERO_STATS,

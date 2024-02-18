@@ -6,11 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "server": "node ./server/index.js",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "lint:scss": "stylelint \"**/*.scss\"",
-    "prepare": "husky install"
+    "prepare": "npm install && husky install"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.17.19",
@@ -22,7 +21,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
-    "sharp": "^0.33.2",
     "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.8.0"
   },
@@ -33,8 +31,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "http-proxy": "^1.18.1",
-    "husky": "^9.0.10",
+    "husky": "^8.0.0",
     "sass": "^1.69.5",
+    "sharp": "^0.33.2",
     "stylelint": "^16.2.1",
     "stylelint-order": "^6.0.4",
     "vite": "^5.0.8",
@@ -43,8 +42,19 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run lint:scss",
+      "pre-commit": "lint-staged",
       "post-commit": "git push"
     }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --report-unused-disable-directives --max-warnings 0"
+    ],
+    "*.scss": [
+      "stylelint \"**/*.scss\""
+    ]
   }
+ 
 }
+
+
