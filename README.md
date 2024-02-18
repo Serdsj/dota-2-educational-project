@@ -18,7 +18,7 @@
   &nbsp;
   <a href="#pushpin-scripts">Scripts</a>&nbsp;&nbsp;&nbsp;|&nbsp;
    &nbsp;
-  <a href="https://pizza-vue.herokuapp.com/">Preview</a>
+  <a href="dota-2-project.vercel.app">Preview</a>
 </p>
 
 
@@ -41,7 +41,6 @@ This project was developed using the following technologies:
 - [Stylelint](https://stylelint.io/)
 - [vite-plugin-image-optimizer](https://github.com/FatehAK/vite-plugin-image-optimizer)
 - [eslint-plugin-react](eslint-plugin-react)
-- [prettier](https://prettier.io/)
 
   ## :information_source: How To Use
 
@@ -56,6 +55,10 @@ $ cd dota2
 
 # Install dependencies
 $ npm install
+
+# Install a husky
+$ npm run prepare
+
 
 # Run the app
 $ npm run dev
@@ -74,14 +77,6 @@ $ git commit -m "new changes" # create commit
 
 # if you want to send a commit without any checks use --no-verify
 $ git commit -m "keep calm and commit" --no-verify
-
-# Hooks can be changed or removed in package.json
-"husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run lint:scss",
-      "post-commit": "git push"
-    }
-  },
 
 ```
 
@@ -106,13 +101,12 @@ $ npm run dev # start an application in development mode
 
 ```bash
 
-
 ├───dist
 │   └───assets
 ├───node_modules
 ├───public
 │   └───assets
-├───screenShots
+├───screenshots
 └───src
     ├───components
     │   ├───BackgroundPage
@@ -122,7 +116,7 @@ $ npm run dev # start an application in development mode
     │   ├───HeroDetailInfo
     │   │   ├───HeroAbilities
     │   │   ├───HeroAbilityDetails
-    │   │   │   ├───HeroAbilityDetails_DamageType
+    │   │   │   ├───HeroAbilityDetailsDamageType
     │   │   │   └───HeroAbilityDetails_GetAbilityDetails
     │   │   ├───HeroAttrsRoslStat
     │   │   ├───HeroDescription
@@ -141,13 +135,11 @@ $ npm run dev # start an application in development mode
     │   ├───HeroesFilterPage
     │   └───HeroPage
     ├───query
-    ├───styles
-    │   ├───placeHolders
-    │   └───variables
-    └───shared
-        ├───api
-        ├───config
-        └───utils
+    ├───shared
+    │   ├───api
+    │   ├───config
+    │   └───utils
+    └───styles
 
 
 ## :eyes: Original page
