@@ -141,6 +141,7 @@ $ npm run dev # start an application in development mode
     │   └───utils
     └───styles
 
+```
 
 ## :eyes: Original page
 
