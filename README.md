@@ -18,7 +18,7 @@
   &nbsp;
   <a href="#pushpin-scripts">Scripts</a>&nbsp;&nbsp;&nbsp;|&nbsp;
    &nbsp;
-  <a href="dota-2-project.vercel.app">Preview</a>
+  <a href="https://dota-2-project.vercel.app/">Preview</a>
 </p>
 
 
