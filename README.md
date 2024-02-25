@@ -8,10 +8,10 @@
 </p>
 
 <p align="center">
- <a href="https://dota-2-project.vercel.app/">Preview</a>
-  <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+ <a href="https://dota-2-project.vercel.app/">Preview</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#eyes-website">Original page</a>&nbsp;&nbsp;&nbsp;|&nbsp;
+  <a href="#eyes-original-page">Original page</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   &nbsp;
   <a href="#hammer-structure">Structure</a>&nbsp;&nbsp;&nbsp;|&nbsp;
   &nbsp;
